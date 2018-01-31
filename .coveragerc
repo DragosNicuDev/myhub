@@ -1,0 +1,5 @@
+[run]
+include = myhub_events/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin
