@@ -39,46 +39,11 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md fixed-top navbar-transparent" color-on-scroll="500">
-        <div class="container">
-            <div class="navbar-translate">
-                <button class="navbar-toggler navbar-toggler-right navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-bar"></span>
-                    <span class="navbar-toggler-bar"></span>
-                    <span class="navbar-toggler-bar"></span>
-                </button>
-                <a class="navbar-brand" href="https://myhub.events">MyHub Events</a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarToggler">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
-                            <i class="fa fa-facebook-square"></i>
-                            <p class="d-lg-none">Facebook</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#Quiz" class="nav-link"><i class="nc-icon nc-book-bookmark"></i> Quiz</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="wrapper">
-        <div class="page-header section-dark" style="background-image: url('{% static 'images/us.jpg' %}')">
-            <div class="filter"></div>
-    		<div class="content-center">
-    			<div class="container">
-    				<div class="title-brand">
-    					<h1 class="presentation-title">Our Wedding Branch tests</h1>
-    				</div>
-            <h2 class="presentation-subtitle text-center">Saturday, 15 September 2018</h2>
-    			</div>
-    		</div>
-            <div class="moving-clouds" style="background-image: url('{% static 'images/clouds.png' %}'); ">
 
-            </div>
-    	</div>
+  {% include "navbar.html" %}
+    <div class="wrapper">
+      {% block page-header %}
+      {% endblock %}
         <div class="main"  id="Quiz">
           <div class="section section-dark">
               <div class="container">
@@ -101,24 +66,7 @@
 
         </div>
   	</div>
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <!-- <nav class="footer-nav">
-                    <ul>
-                        <li><a href="http://www.creative-tim.com">Creative Tim</a></li>
-                        <li><a href="http://blog.creative-tim.com">Blog</a></li>
-                        <li><a href="http://www.creative-tim.com/license">Licenses</a></li>
-                    </ul>
-                </nav> -->
-                <div class="credits ml-auto">
-                    <span class="copyright">
-                        © <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
-                    </span>
-                </div>
-            </div>
-        </div>
-    </footer>
+    {% include "footer.html" %}
 </body>
 
 <!-- Core JS Files -->

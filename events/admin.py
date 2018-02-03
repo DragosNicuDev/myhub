@@ -5,6 +5,11 @@ from .models import Event
 
 
 class EventAdmin(admin.ModelAdmin):
-    pass
+    list_display = (
+        'event_title',
+        'event_slug',
+        'event_user',
+        'event_date_created'
+    )
 
 admin.site.register(Event, EventAdmin)
