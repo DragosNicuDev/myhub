@@ -10,7 +10,7 @@
         <div class="title-brand">
           <h1 class="presentation-title">{{event.event_title}}</h1>
         </div>
-        <h2 class="presentation-subtitle text-center">Saturday, 15 September 2018</h2>
+        <h2 class="presentation-subtitle text-center">{{date_time.event_dateandtime | date:"l, j F Y, H:i"}}</h2>
       </div>
     </div>
     <div class="moving-clouds" style="background-image: url('{% static 'images/clouds.png' %}'); ">

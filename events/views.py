@@ -1,7 +1,7 @@
 from django.views.generic import DetailView, ListView, TemplateView
 
 # Create your views here.
-from .models import Event
+from .models import Event, EventDateAndTime
 
 
 class EventTemplateView(TemplateView):
@@ -11,4 +11,5 @@ class EventTemplateView(TemplateView):
     def get_context_data(self, **kwargs):
        context = super().get_context_data(**kwargs)
        context['event'] = Event.objects.first()
+       context['date_time'] = EventDateAndTime.objects.first()
        return context

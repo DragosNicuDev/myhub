@@ -39,3 +39,18 @@ class Event(models.Model):
     # Return string
     def __str__(self):
         return str(self.event_title)
+
+
+class EventDateAndTime(models.Model):
+    '''The Event organiser can add a date and a time to the event'''
+
+    # The event attached to
+    event = models.ForeignKey(
+        Event,
+        related_name='date_event')
+
+    # The date and time of the event
+    event_dateandtime = models.DateTimeField(
+        'Date and Time',
+        auto_now=False,
+        auto_now_add=False)
