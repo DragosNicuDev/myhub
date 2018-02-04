@@ -49,6 +49,25 @@ INSTALLED_APPS += ['debug_toolbar',
                    'autoslug',
                    'events']
 
+FOBI_SPECIFFIC = [
+    # `django-fobi` core
+    'fobi',
+
+    # `django-fobi` themes
+    'fobi.contrib.themes.bootstrap3',
+
+    # `django-fobi` form elements - fields
+    'fobi.contrib.plugins.form_elements.fields.checkbox_select_multiple',
+    'fobi.contrib.plugins.form_elements.fields.radio',
+
+    # `django-fobi` form handlers
+    'fobi.contrib.plugins.form_handlers.db_store',
+]
+
+FOBI_DEBUG = True
+
+INSTALLED_APPS += FOBI_SPECIFFIC
+
 INTERNAL_IPS = ['127.0.0.1', '10.0.2.2', ]
 
 DEBUG_TOOLBAR_CONFIG = {

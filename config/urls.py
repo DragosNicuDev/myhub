@@ -13,6 +13,16 @@ urlpatterns = [
     url(r'^$', EventTemplateView.as_view(), name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
 
+    # Fobi View URLs
+    url(r'^fobi/', include('fobi.urls.view')),
+
+    # Fobi Edit URLs
+    url(r'^fobi/', include('fobi.urls.edit')),
+
+    # Fobi DB Store plugin URLs
+    # url(r'^fobi/plugins/form-handlers/db-store/',
+    #     include('fobi.contrib.plugins.form_handlers.db_store.urls')),
+
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, admin.site.urls),
 
