@@ -48,6 +48,7 @@ INSTALLED_APPS += ['debug_toolbar',
                    'imagekit',
                    'autoslug',
                    'easy_maps',
+                   'django_summernote',
                    'events']
 
 FOBI_SPECIFFIC = [

@@ -27,11 +27,11 @@
 {% block description %}
 
 <div class="main"  id="Description">
-  <div class="section section-dark">
+  <div class="section">
       <div class="container">
           <div class="row example-page">
-              <div class="col-md-12 text-center">
-                {{description.event_description}}
+              <div class="col-md-12">
+                {{description.event_description|safe}}
               </div>
           </div>
       </div>

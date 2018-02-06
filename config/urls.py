@@ -19,6 +19,8 @@ urlpatterns = [
     # Fobi Edit URLs
     url(r'^fobi/', include('fobi.urls.edit')),
 
+    url(r'^summernote/', include('django_summernote.urls')),
+
     # Fobi DB Store plugin URLs
     # url(r'^fobi/plugins/form-handlers/db-store/',
     #     include('fobi.contrib.plugins.form_handlers.db_store.urls')),

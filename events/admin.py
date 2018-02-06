@@ -1,11 +1,16 @@
 from django.contrib import admin
+from django_summernote.admin import SummernoteModelAdmin
 
 from .models import (
     Event,
     EventDateAndTime,
     EventDescription,
     EventLocation)
-# Register your models here.
+
+
+# Apply summernote to all TextField in model.
+class SomeModelAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
+    summer_note_fields = '__all__'
 
 
 class EventTime(admin.TabularInline):
@@ -38,3 +43,4 @@ class EventAdmin(admin.ModelAdmin):
     ]
 
 admin.site.register(Event, EventAdmin)
+admin.site.register(EventDescription, SomeModelAdmin)
