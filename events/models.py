@@ -61,3 +61,17 @@ class EventDateAndTime(models.Model):
         'End Date and Time',
         auto_now=False,
         auto_now_add=False)
+
+
+class EventDescription(models.Model):
+    '''The Event organiser can add a description'''
+
+    # The event attached to
+    event = models.ForeignKey(
+        Event,
+        related_name='event_description',
+        on_delete=models.CASCADE
+    )
+
+    # Description field
+    event_description = models.TextField()

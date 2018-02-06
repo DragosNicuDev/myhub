@@ -10,11 +10,33 @@
         <div class="title-brand">
           <h1 class="presentation-title">{{event.event_title}}</h1>
         </div>
-        <h2 class="presentation-subtitle text-center">{{date_time.event_dateandtime | date:"l, j F Y, H:i"}}</h2>
+        <h2 class="presentation-subtitle text-center">
+          From {{date_time.event_start_date | date:"l, j F Y, H:i"}}
+        </h2>
+        <h2 class="presentation-subtitle text-center">
+          Until {{date_time.event_end_date | date:"l, j F Y, H:i"}}
+        </h2>
       </div>
     </div>
     <div class="moving-clouds" style="background-image: url('{% static 'images/clouds.png' %}'); ">
 
     </div>
   </div>
+{% endblock %}
+
+{% block description %}
+
+<div class="main"  id="Description">
+  <div class="section section-dark">
+      <div class="container">
+          <div class="row example-page">
+              <div class="col-md-12 text-center">
+                {{description.event_description}}
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+
 {% endblock %}
