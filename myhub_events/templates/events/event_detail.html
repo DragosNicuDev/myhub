@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load static %}
+{% load easy_maps_tags static %}
 
 {% block page-header %}
   <div class="page-header section-dark" style="background-image: url('{{event.event_main_image.url}}')">
@@ -32,6 +32,25 @@
           <div class="row example-page">
               <div class="col-md-12 text-center">
                 {{description.event_description}}
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block location %}
+
+<div class="main"  id="Location">
+  <div class="section section-dark">
+      <div class="container">
+          <div class="row example-page">
+              <div class="col-md-12 text-center">
+                <h3>{{location.event_location_name}}</h3>
+                <h6>{{location.event_location_address}}</h6>
+                {% easy_map location.event_location_address %}
               </div>
           </div>
       </div>

@@ -75,3 +75,39 @@ class EventDescription(models.Model):
 
     # Description field
     event_description = models.TextField()
+
+
+class EventLocation(models.Model):
+    '''The event location'''
+
+    # The event attached to
+    event = models.ForeignKey(
+        Event,
+        related_name='event_location',
+        on_delete=models.CASCADE
+    )
+
+    # The event location name
+    event_location_name = models.CharField(
+        'Name of the location',
+        max_length=80,
+        null=True,
+        blank=True
+    )
+
+    # The location's address
+    event_location_address = models.CharField(
+        'Address of the location',
+        max_length=256,
+        null=True,
+        blank=True
+    )
+
+    # The location date and time (optional)
+    event_location_datetime = models.DateTimeField(
+        'Date and Time at the location',
+        auto_now=False,
+        auto_now_add=False,
+        blank=True,
+        null=True
+    )

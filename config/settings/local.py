@@ -47,6 +47,7 @@ MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
 INSTALLED_APPS += ['debug_toolbar',
                    'imagekit',
                    'autoslug',
+                   'easy_maps',
                    'events']
 
 FOBI_SPECIFFIC = [
@@ -87,3 +88,7 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 # Your local stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
+
+AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
+
+EASY_MAPS_GOOGLE_MAPS_API_KEY = 'AIzaSyByvIhe5x2uDsVamvHl5D0pd-eMAg0mACE'

@@ -4,7 +4,8 @@ from django.views.generic import DetailView, ListView, TemplateView
 from .models import (
     Event,
     EventDateAndTime,
-    EventDescription)
+    EventDescription,
+    EventLocation)
 
 
 class EventTemplateView(TemplateView):
@@ -16,4 +17,5 @@ class EventTemplateView(TemplateView):
        context['event'] = Event.objects.first()
        context['date_time'] = EventDateAndTime.objects.first()
        context['description'] = EventDescription.objects.first()
+       context['location'] = EventLocation.objects.first()
        return context

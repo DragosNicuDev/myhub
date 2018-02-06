@@ -3,7 +3,8 @@ from django.contrib import admin
 from .models import (
     Event,
     EventDateAndTime,
-    EventDescription)
+    EventDescription,
+    EventLocation)
 # Register your models here.
 
 
@@ -17,6 +18,11 @@ class EventDescAdmin(admin.TabularInline):
     extra = 0
 
 
+class EventLocationAdmin(admin.TabularInline):
+    model = EventLocation
+    extra = 0
+
+
 class EventAdmin(admin.ModelAdmin):
     list_display = (
         'event_title',
@@ -27,7 +33,8 @@ class EventAdmin(admin.ModelAdmin):
 
     inlines = [
         EventTime,
-        EventDescAdmin
+        EventDescAdmin,
+        EventLocationAdmin
     ]
 
 admin.site.register(Event, EventAdmin)
