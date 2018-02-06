@@ -47,10 +47,17 @@ class EventDateAndTime(models.Model):
     # The event attached to
     event = models.ForeignKey(
         Event,
-        related_name='date_event')
+        related_name='date_event',
+        on_delete=models.CASCADE)
 
-    # The date and time of the event
-    event_dateandtime = models.DateTimeField(
-        'Date and Time',
+    # The start date and time of the event
+    event_start_date = models.DateTimeField(
+        'Start Date and Time',
+        auto_now=False,
+        auto_now_add=False)
+
+    # The end date and time of the event
+    event_end_date = models.DateTimeField(
+        'End Date and Time',
         auto_now=False,
         auto_now_add=False)
