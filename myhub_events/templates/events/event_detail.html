@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% load easy_maps_tags static %}
+
+{% block page-header %}
+  <div class="page-header section-dark" style="background-image: url('{{event.event_main_image.url}}')">
+    <div class="filter"></div>
+    <div class="content-center">
+      <div class="container">
+        <div class="title-brand">
+          <h1 class="presentation-title">{{event.event_title}}</h1>
+        </div>
+        <h2 class="presentation-subtitle text-center">
+          From {{date_time.event_start_date | date:"l, j F Y, H:i"}}
+        </h2>
+        <h2 class="presentation-subtitle text-center">
+          Until {{date_time.event_end_date | date:"l, j F Y, H:i"}}
+        </h2>
+      </div>
+    </div>
+    <div class="moving-clouds" style="background-image: url('{% static 'images/clouds.png' %}'); ">
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block description %}
+
+<div class="main"  id="Description">
+  <div class="section">
+      <div class="container">
+          <div class="row example-page">
+              <div class="col-md-12">
+                {{description.event_description|safe}}
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block location %}
+
+<div class="main"  id="Location">
+  <div class="section section-dark">
+      <div class="container">
+          <div class="row example-page">
+              <div class="col-md-12 text-center">
+                <h3>{{location.event_location_name}}</h3>
+                <h6>{{location.event_location_address}}</h6>
+                {% easy_map location.event_location_address %}
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+
+{% endblock %}

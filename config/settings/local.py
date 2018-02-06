@@ -44,7 +44,31 @@ CACHES = {
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
 MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
-INSTALLED_APPS += ['debug_toolbar', ]
+INSTALLED_APPS += ['debug_toolbar',
+                   'imagekit',
+                   'autoslug',
+                   'easy_maps',
+                   'django_summernote',
+                   'events']
+
+FOBI_SPECIFFIC = [
+    # `django-fobi` core
+    'fobi',
+
+    # `django-fobi` themes
+    'fobi.contrib.themes.bootstrap3',
+
+    # `django-fobi` form elements - fields
+    'fobi.contrib.plugins.form_elements.fields.checkbox_select_multiple',
+    'fobi.contrib.plugins.form_elements.fields.radio',
+
+    # `django-fobi` form handlers
+    'fobi.contrib.plugins.form_handlers.db_store',
+]
+
+FOBI_DEBUG = True
+
+INSTALLED_APPS += FOBI_SPECIFFIC
 
 INTERNAL_IPS = ['127.0.0.1', '10.0.2.2', ]
 
@@ -65,3 +89,7 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 # Your local stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
+
+AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
+
+EASY_MAPS_GOOGLE_MAPS_API_KEY = 'AIzaSyByvIhe5x2uDsVamvHl5D0pd-eMAg0mACE'

@@ -5,9 +5,25 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 
+from events.views import EventTemplateView
+
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),
+    # url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),
+    # url(r'^(?P<pk>\d+)/$', EventDetailView.as_view(), name='home'),
+    url(r'^$', EventTemplateView.as_view(), name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
+
+    # Fobi View URLs
+    url(r'^fobi/', include('fobi.urls.view')),
+
+    # Fobi Edit URLs
+    url(r'^fobi/', include('fobi.urls.edit')),
+
+    url(r'^summernote/', include('django_summernote.urls')),
+
+    # Fobi DB Store plugin URLs
+    # url(r'^fobi/plugins/form-handlers/db-store/',
+    #     include('fobi.contrib.plugins.form_handlers.db_store.urls')),
 
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, admin.site.urls),
