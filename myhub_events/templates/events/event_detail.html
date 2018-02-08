@@ -47,6 +47,9 @@
   <div class="section section-dark">
       <div class="container">
           <div class="row example-page">
+            {% block api_js %}
+              <script type="text/javascript" src="https://maps.google.com/maps/api/js?key={{gmap_key}}"></script>
+            {% endblock %}
             {% for l in location %}
             <div class="col-md-{% widthratio 12 location.count 1 %} col-sm-12 text-center">
               <h3>{{l.event_location_name}}</h3>

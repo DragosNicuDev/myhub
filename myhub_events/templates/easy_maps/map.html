@@ -1,8 +1,6 @@
 {% with map.latitude|stringformat:"f" as lat %}{% with map.longitude|stringformat:"f" as long %}
 
-{% block api_js %}
-  <script type="text/javascript" src="https://maps.google.com/maps/api/js?key={{ api_key }}"></script>
-{% endblock %}
+
 
 {% block html %}
   <!-- HTML map container -->

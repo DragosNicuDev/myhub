@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.views.generic import DetailView, ListView, TemplateView
 
 # Create your views here.
@@ -17,5 +18,6 @@ class EventTemplateView(TemplateView):
        context['event'] = Event.objects.first()
        context['date_time'] = EventDateAndTime.objects.first()
        context['description'] = EventDescription.objects.first()
+       context['gmap_key'] = settings.EASY_MAPS_GOOGLE_MAPS_API_KEY
        context['location'] = EventLocation.objects.all()
        return context
