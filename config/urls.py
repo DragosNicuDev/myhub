@@ -14,10 +14,10 @@ urlpatterns = [
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
 
     # Fobi View URLs
-    url(r'^fobi/', include('fobi.urls.view')),
+    # url(r'^fobi/', include('fobi.urls.view')),
 
     # Fobi Edit URLs
-    url(r'^fobi/', include('fobi.urls.edit')),
+    # url(r'^fobi/', include('fobi.urls.edit')),
 
     url(r'^summernote/', include('django_summernote.urls')),
 
