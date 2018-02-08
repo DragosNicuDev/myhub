@@ -44,12 +44,7 @@ CACHES = {
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
 MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
-INSTALLED_APPS += ['debug_toolbar',
-                   'imagekit',
-                   'autoslug',
-                   'easy_maps',
-                   'django_summernote',
-                   'events']
+INSTALLED_APPS += ['debug_toolbar',]
 
 FOBI_SPECIFFIC = [
     # `django-fobi` core
