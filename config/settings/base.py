@@ -49,6 +49,10 @@ THIRD_PARTY_APPS = [
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
+    'autoslug',
+    'easy_maps',
+    'django_summernote',
+    'imagekit',
 ]
 
 # Apps specific for this project go here.
@@ -56,6 +60,7 @@ LOCAL_APPS = [
     # custom users app
     'myhub_events.users.apps.UsersConfig',
     # Your stuff: custom apps go here
+    'events',
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -170,7 +175,7 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
                 # Your stuff: custom template context processors go here
-                "fobi.context_processors.theme",
+                # "fobi.context_processors.theme",
             ],
         },
     },
@@ -274,3 +279,4 @@ ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
+EASY_MAPS_GOOGLE_MAPS_API_KEY = 'AIzaSyByvIhe5x2uDsVamvHl5D0pd-eMAg0mACE'

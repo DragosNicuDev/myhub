@@ -17,6 +17,7 @@ import os
 import sys
 
 from django.core.wsgi import get_wsgi_application
+from dj_static import Cling, MediaCling
 
 # This allows easy placement of apps within the interior
 # myhub_events directory.
@@ -39,3 +40,4 @@ application = get_wsgi_application()
 # Apply WSGI middleware here.
 # from helloworld.wsgi import HelloWorldApplication
 # application = HelloWorldApplication(application)
+application = Cling(MediaCling(get_wsgi_application()))
