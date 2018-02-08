@@ -47,11 +47,13 @@
   <div class="section section-dark">
       <div class="container">
           <div class="row example-page">
-              <div class="col-md-12 text-center">
-                <h3>{{location.event_location_name}}</h3>
-                <h6>{{location.event_location_address}}</h6>
-                {% easy_map location.event_location_address %}
-              </div>
+            {% for l in location %}
+            <div class="col-md-{% widthratio 12 location.count 1 %} col-sm-12 text-center">
+              <h3>{{l.event_location_name}}</h3>
+              <h6>{{l.event_location_address}}</h6>
+              {% easy_map l.event_location_address %}
+            </div>
+            {% endfor %}
           </div>
       </div>
   </div>

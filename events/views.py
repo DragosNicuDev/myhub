@@ -17,5 +17,5 @@ class EventTemplateView(TemplateView):
        context['event'] = Event.objects.first()
        context['date_time'] = EventDateAndTime.objects.first()
        context['description'] = EventDescription.objects.first()
-       context['location'] = EventLocation.objects.first()
+       context['location'] = EventLocation.objects.all()
        return context
