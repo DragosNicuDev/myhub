@@ -1,3 +1,8 @@
+{% load i18n %}
+
+{% get_available_languages as languages %}
+
+
 <nav class="navbar navbar-expand-md fixed-top navbar-transparent" color-on-scroll="500">
     <div class="container">
         <div class="navbar-translate">
@@ -11,11 +16,24 @@
         <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="#Description" class="nav-link"><i class="nc-icon nc-align-left-2"></i> Description</a>
+                    <a href="#Description" class="nav-link"><i class="nc-icon nc-align-left-2"></i> {% trans "More Info" %}</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#Location" class="nav-link"><i class="nc-icon nc-pin-3"></i> Location</a>
+                    <a href="#Location" class="nav-link"><i class="nc-icon nc-pin-3"></i> {% trans "Location" %}</a>
                 </li>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" href="#pk" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-globe"></i> {% trans "Choose language" %}</a>
+                    <ul class="dropdown-menu dropdown-info" aria-labelledby="dropdownMenuButton">
+                        {% for language in languages %}
+                        <li class="nav-item-{% ifequal current_language language.0 %}active{% endifequal %}">
+                        <a class="dropdown-item" href="/./{{ language.0 }}/">
+                          <i
+                            {% ifequal language.0 'en' %}class="flag-icon flag-icon-ie"{% endifequal %}class="flag-icon flag-icon-{{ language.0 }}"></i> {{ language.1 }}
+                        </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </ul>
         </div>
     </div>

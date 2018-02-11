@@ -1,20 +1,28 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from django.utils.translation import ugettext_lazy as _
 
 from autoslug import AutoSlugField
 from imagekit.models import ProcessedImageField
+from localized_fields.models import LocalizedModel
+from localized_fields.fields import (LocalizedCharField,
+                                     LocalizedFileField,
+                                     LocalizedTextField,
+                                     LocalizedUniqueSlugField)
 
 
 # Create your models here.
-class Event(models.Model):
+class Event(LocalizedModel, models.Model):
     '''The place where an organiser can create an event'''
 
     # Event Title
-    event_title = models.CharField('Event Title', max_length=256)
+    # event_title = models.CharField(_('Event Title'), max_length=256)
+    event_title = LocalizedCharField(_('Event Title'), max_length=256)
 
     # Event slug
-    event_slug = AutoSlugField(populate_from='event_title', default='')
+    # event_slug = AutoSlugField(populate_from='event_title', default='')
+    event_slug = LocalizedUniqueSlugField(populate_from='event_title')
 
     # Event creation date
     event_date_created = models.DateTimeField(default=timezone.now,
@@ -22,15 +30,15 @@ class Event(models.Model):
                                         auto_now_add=False)
 
     # Event main image path
-    def path_and_rename(instance, filename):
+    def path_and_rename(instance, filename, lang):
         extension = filename.split('.')[-1]
 
-        return '{}.{}'.format(timezone.now(), extension)
+        return '{}-{}.{}'.format(lang, timezone.now(), extension)
 
     # Event main image
-    event_main_image = ProcessedImageField(upload_to=path_and_rename,
-                                           format='jpeg',
-                                           options={'quality': 80},)
+    event_main_image = LocalizedFileField(_('Main image'),
+                                           upload_to=path_and_rename,
+                                          )
 
     # Event organiser
     event_user = models.ForeignKey(settings.AUTH_USER_MODEL,
@@ -52,13 +60,13 @@ class EventDateAndTime(models.Model):
 
     # The start date and time of the event
     event_start_date = models.DateTimeField(
-        'Start Date and Time',
+        _('Start Date and Time'),
         auto_now=False,
         auto_now_add=False)
 
     # The end date and time of the event
     event_end_date = models.DateTimeField(
-        'End Date and Time',
+        _('End Date and Time'),
         auto_now=False,
         auto_now_add=False)
 
@@ -74,7 +82,8 @@ class EventDescription(models.Model):
     )
 
     # Description field
-    event_description = models.TextField()
+    # event_description = models.TextField()
+    event_description = LocalizedTextField(_('Event Description'), null=True, required=False)
 
 
 class EventLocation(models.Model):
@@ -89,7 +98,7 @@ class EventLocation(models.Model):
 
     # The event location name
     event_location_name = models.CharField(
-        'Name of the location',
+        _('Name of the location'),
         max_length=80,
         null=True,
         blank=True
@@ -97,7 +106,7 @@ class EventLocation(models.Model):
 
     # The location's address
     event_location_address = models.CharField(
-        'Address of the location',
+        _('Address of the location'),
         max_length=256,
         null=True,
         blank=True
@@ -105,7 +114,8 @@ class EventLocation(models.Model):
 
     # The location date and time (optional)
     event_location_datetime = models.DateTimeField(
-        'Date and Time at the location',
+        _('Date and Time at the location'),
+        help_text=_('This is optional'),
         auto_now=False,
         auto_now_add=False,
         blank=True,

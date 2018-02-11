@@ -44,7 +44,9 @@ CACHES = {
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
 MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
-INSTALLED_APPS += ['debug_toolbar',]
+INSTALLED_APPS += ['debug_toolbar',
+                   'psqlextra',
+                   'localized_fields.apps.LocalizedFieldsConfig']
 
 FOBI_SPECIFFIC = [
     # `django-fobi` core
@@ -88,3 +90,13 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
 
 EASY_MAPS_GOOGLE_MAPS_API_KEY = 'AIzaSyByvIhe5x2uDsVamvHl5D0pd-eMAg0mACE'
+
+LANGUAGE_CODE = 'en' # default language
+LANGUAGES = (
+    ('en', 'English'),
+    ('ro', 'Romanian')
+)
+
+LOCALE_PATHS = [
+    str(APPS_DIR.path('locale'))
+]

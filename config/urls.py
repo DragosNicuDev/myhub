@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.conf.urls import include, url
+from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
@@ -8,9 +9,7 @@ from django.views import defaults as default_views
 from events.views import EventTemplateView
 
 urlpatterns = [
-    # url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),
-    # url(r'^(?P<pk>\d+)/$', EventDetailView.as_view(), name='home'),
-    url(r'^$', EventTemplateView.as_view(), name='home'),
+    # url(r'^$', EventTemplateView.as_view(), name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
 
     # Fobi View URLs
@@ -29,13 +28,22 @@ urlpatterns = [
     url(settings.ADMIN_URL, admin.site.urls),
 
     # User management
-    url(r'^users/', include('myhub_events.users.urls', namespace='users')),
-    url(r'^accounts/', include('allauth.urls')),
+    # url(r'^users/', include('myhub_events.users.urls', namespace='users')),
+    # url(r'^accounts/', include('allauth.urls')),
 
     # Your stuff: custom urls includes go here
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += i18n_patterns(
+    url(r'^$', EventTemplateView.as_view(), name='home'),
+    url(r'^accounts/', include('allauth.urls')),
+    url(r'^users/', include('myhub_events.users.urls', namespace='users')),
+
+    # prefix_default_language=False
+)
 
 if settings.DEBUG:
     # This allows the error pages to be debugged during development, just visit

@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
+from localized_fields.admin import LocalizedFieldsAdminMixin
 
 from .models import (
     Event,
@@ -9,8 +10,12 @@ from .models import (
 
 
 # Apply summernote to all TextField in model.
-class SomeModelAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
-    summer_note_fields = '__all__'
+# class SomeModelAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
+class SomeModelAdmin(LocalizedFieldsAdminMixin, SummernoteModelAdmin):  # instead of ModelAdmin
+    # summer_note_fields = '__all__'
+    # summer_note_fields = 'event_description'
+    # summer_note_fields = 'event_trans'
+    pass
 
 
 class EventTime(admin.TabularInline):

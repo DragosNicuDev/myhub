@@ -1,0 +1,338 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-11 14:06+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
+
+#: events/models.py:21
+msgid "Event Title"
+msgstr "Titlul evenimentului"
+
+#: events/models.py:39
+msgid "Main image"
+msgstr "Imaginea principală"
+
+#: events/models.py:63
+msgid "Start Date and Time"
+msgstr "Începe (dată și oră)"
+
+#: events/models.py:69
+msgid "End Date and Time"
+msgstr "Se termină (dată și oră)"
+
+#: events/models.py:86
+msgid "Event Description"
+msgstr "Descrierea evenimentului"
+
+#: events/models.py:101
+msgid "Name of the location"
+msgstr "Numele locației"
+
+#: events/models.py:109
+msgid "Address of the location"
+msgstr "Adresa locației"
+
+#: events/models.py:117
+msgid "Date and Time at the location"
+msgstr "Data și ora locației"
+
+#: events/models.py:118
+msgid "This is optional"
+msgstr "Este opțional"
+
+#: myhub_events/templates/account/account_inactive.html:5
+#: myhub_events/templates/account/account_inactive.html:8
+msgid "Account Inactive"
+msgstr "Cont inactiv"
+
+#: myhub_events/templates/account/account_inactive.html:10
+msgid "This account is inactive."
+msgstr "Acest cont este inactiv"
+
+#: myhub_events/templates/account/email.html:7
+msgid "Account"
+msgstr "Cont"
+
+#: myhub_events/templates/account/email.html:10
+msgid "E-mail Addresses"
+msgstr "Adresa de email"
+
+#: myhub_events/templates/account/email.html:13
+msgid "The following e-mail addresses are associated with your account:"
+msgstr "Aceste adrese de email sunt asociate cu contul dumneavoastră:"
+
+#: myhub_events/templates/account/email.html:27
+msgid "Verified"
+msgstr "Verificat(e)"
+
+#: myhub_events/templates/account/email.html:29
+msgid "Unverified"
+msgstr "Neverificat(e)"
+
+#: myhub_events/templates/account/email.html:31
+msgid "Primary"
+msgstr "Principală"
+
+#: myhub_events/templates/account/email.html:37
+msgid "Make Primary"
+msgstr "Fă-o principală"
+
+#: myhub_events/templates/account/email.html:38
+msgid "Re-send Verification"
+msgstr "Retrimite verificare"
+
+#: myhub_events/templates/account/email.html:39
+msgid "Remove"
+msgstr "Șterge"
+
+#: myhub_events/templates/account/email.html:46
+msgid "Warning:"
+msgstr "Atenție:"
+
+#: myhub_events/templates/account/email.html:46
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+
+#: myhub_events/templates/account/email.html:51
+msgid "Add E-mail Address"
+msgstr "Adaugă adresă de email"
+
+#: myhub_events/templates/account/email.html:56
+msgid "Add E-mail"
+msgstr "Adaugă email"
+
+#: myhub_events/templates/account/email.html:66
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr ""
+
+#: myhub_events/templates/account/email_confirm.html:6
+#: myhub_events/templates/account/email_confirm.html:10
+msgid "Confirm E-mail Address"
+msgstr "Confirmă adresa de email"
+
+#: myhub_events/templates/account/email_confirm.html:16
+#, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
+"address for user %(user_display)s."
+msgstr ""
+
+#: myhub_events/templates/account/email_confirm.html:20
+msgid "Confirm"
+msgstr "Confirmă"
+
+#: myhub_events/templates/account/email_confirm.html:27
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a href="
+"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+
+#: myhub_events/templates/account/login.html:7
+#: myhub_events/templates/account/login.html:11
+#: myhub_events/templates/account/login.html:44
+msgid "Sign In"
+msgstr ""
+
+#: myhub_events/templates/account/login.html:16
+#, python-format
+msgid ""
+"Please sign in with one\n"
+"of your existing third party accounts. Or, <a href=\"%(signup_url)s\">sign "
+"up</a>\n"
+"for a %(site_name)s account and sign in below:"
+msgstr ""
+
+#: myhub_events/templates/account/login.html:26
+msgid "or"
+msgstr "sau"
+
+#: myhub_events/templates/account/login.html:33
+#, python-format
+msgid ""
+"If you have not created an account yet, then please\n"
+"<a href=\"%(signup_url)s\">sign up</a> first."
+msgstr ""
+
+#: myhub_events/templates/account/login.html:43
+msgid "Forgot Password?"
+msgstr "Ați uitat parola?"
+
+#: myhub_events/templates/account/logout.html:5
+#: myhub_events/templates/account/logout.html:8
+#: myhub_events/templates/account/logout.html:17
+msgid "Sign Out"
+msgstr ""
+
+#: myhub_events/templates/account/logout.html:10
+msgid "Are you sure you want to sign out?"
+msgstr ""
+
+#: myhub_events/templates/account/password_change.html:6
+#: myhub_events/templates/account/password_change.html:9
+#: myhub_events/templates/account/password_change.html:14
+#: myhub_events/templates/account/password_reset_from_key.html:5
+#: myhub_events/templates/account/password_reset_from_key.html:8
+#: myhub_events/templates/account/password_reset_from_key_done.html:4
+#: myhub_events/templates/account/password_reset_from_key_done.html:7
+msgid "Change Password"
+msgstr "Schimbați-vă parola"
+
+#: myhub_events/templates/account/password_reset.html:7
+#: myhub_events/templates/account/password_reset.html:11
+#: myhub_events/templates/account/password_reset_done.html:6
+#: myhub_events/templates/account/password_reset_done.html:9
+msgid "Password Reset"
+msgstr ""
+
+#: myhub_events/templates/account/password_reset.html:16
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+
+#: myhub_events/templates/account/password_reset.html:21
+msgid "Reset My Password"
+msgstr ""
+
+#: myhub_events/templates/account/password_reset.html:24
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr ""
+
+#: myhub_events/templates/account/password_reset_done.html:15
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: myhub_events/templates/account/password_reset_from_key.html:8
+msgid "Bad Token"
+msgstr ""
+
+#: myhub_events/templates/account/password_reset_from_key.html:12
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: myhub_events/templates/account/password_reset_from_key.html:18
+msgid "change password"
+msgstr ""
+
+#: myhub_events/templates/account/password_reset_from_key.html:21
+#: myhub_events/templates/account/password_reset_from_key_done.html:8
+msgid "Your password is now changed."
+msgstr "Parola a fost schimbată"
+
+#: myhub_events/templates/account/password_set.html:6
+#: myhub_events/templates/account/password_set.html:9
+#: myhub_events/templates/account/password_set.html:14
+msgid "Set Password"
+msgstr ""
+
+#: myhub_events/templates/account/signup.html:6
+msgid "Signup"
+msgstr ""
+
+#: myhub_events/templates/account/signup.html:9
+#: myhub_events/templates/account/signup.html:19
+msgid "Sign Up"
+msgstr ""
+
+#: myhub_events/templates/account/signup.html:11
+#, python-format
+msgid ""
+"Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+
+#: myhub_events/templates/account/signup_closed.html:5
+#: myhub_events/templates/account/signup_closed.html:8
+msgid "Sign Up Closed"
+msgstr ""
+
+#: myhub_events/templates/account/signup_closed.html:10
+msgid "We are sorry, but the sign up is currently closed."
+msgstr ""
+
+#: myhub_events/templates/account/verification_sent.html:5
+#: myhub_events/templates/account/verification_sent.html:8
+#: myhub_events/templates/account/verified_email_required.html:5
+#: myhub_events/templates/account/verified_email_required.html:8
+msgid "Verify Your E-mail Address"
+msgstr "Verificați-vă adresa de email"
+
+#: myhub_events/templates/account/verification_sent.html:10
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: myhub_events/templates/account/verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+
+#: myhub_events/templates/account/verified_email_required.html:16
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside this e-mail. Please\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: myhub_events/templates/account/verified_email_required.html:20
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+
+#: myhub_events/templates/events/event_detail.html:17
+msgid "From"
+msgstr "De"
+
+#: myhub_events/templates/events/event_detail.html:20
+msgid "Until"
+msgstr "Până"
+
+#: myhub_events/templates/partials/navbar.html:19
+msgid "More Info"
+msgstr "Mai multe informații"
+
+#: myhub_events/templates/partials/navbar.html:22
+msgid "Location"
+msgstr "Locație"
+
+#: myhub_events/templates/partials/navbar.html:25
+msgid "Choose language"
+msgstr "Alege limba"
+
+#: myhub_events/users/models.py:13
+msgid "Name of User"
+msgstr ""
+
+#, fuzzy
+#~| msgid "Event Description"
+#~ msgid "Description"
+#~ msgstr "Descrierea evenimentului"
