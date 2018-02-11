@@ -44,9 +44,7 @@ CACHES = {
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
 MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
-INSTALLED_APPS += ['debug_toolbar',
-                   'psqlextra',
-                   'localized_fields.apps.LocalizedFieldsConfig']
+INSTALLED_APPS += ['debug_toolbar',]
 
 FOBI_SPECIFFIC = [
     # `django-fobi` core

@@ -54,6 +54,8 @@ THIRD_PARTY_APPS = [
     'easy_maps',
     'django_summernote',
     'imagekit',
+    'psqlextra',
+    'localized_fields.apps.LocalizedFieldsConfig'
 ]
 
 # Apps specific for this project go here.
@@ -133,7 +135,17 @@ DATABASES = {
 TIME_ZONE = 'UTC'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+
+LANGUAGE_CODE = 'en' # default language
+LANGUAGES = (
+    ('en', 'English'),
+    ('ro', 'Romanian')
+)
+
+LOCALE_PATHS = [
+    str(APPS_DIR.path('locale'))
+]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
