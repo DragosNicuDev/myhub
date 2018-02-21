@@ -97,7 +97,7 @@ class EventLocation(models.Model):
     )
 
     # The event location name
-    event_location_name = models.CharField(
+    event_location_name = LocalizedCharField(
         _('Name of the location'),
         max_length=80,
         null=True,
