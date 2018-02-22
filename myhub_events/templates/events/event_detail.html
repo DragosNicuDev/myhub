@@ -68,13 +68,4 @@
 
 
 {% block javascript %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js" charset="utf-8"></script>
-<script type="text/javascript">
-
-$(document).on('click', '[data-toggle="lightbox"]', function(event) {
-  event.preventDefault();
-  $(this).ekkoLightbox({alwaysShowClose: true});
-});
-
-</script>
 {% endblock javascript %}
