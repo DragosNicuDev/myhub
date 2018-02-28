@@ -52,17 +52,16 @@
           {% block api_js %}
           <script type="text/javascript" src="https://maps.google.com/maps/api/js?key={{gmap_key}}"></script>
           {% endblock %}
-          <h1>{{location.first.event_location_address}}</h1>
-          {% easy_map location.first.event_location_address using 'easy_maps/map2.html' %}
-          <h1>{{location.last.event_location_address}}</h1>
-          {% easy_map location.last.event_location_address using 'easy_maps/map.html' %}
-          {% for l in location %}
           <div class="col-md-{% widthratio 12 location.count 1 %} col-sm-12 text-center">
-            <h3>{{l.event_location_name}}</h3>
-            <h6>{{l.event_location_address}}</h6>
-            {% easy_map l.event_location_address %}
+            <h3>{{location.first.event_location_name}}</h3>
+            <h6>{{location.first.event_location_address}}</h6>
+            {% easy_map location.first.event_location_address using 'easy_maps/map2.html' %}
           </div>
-          {% endfor %}
+          <div class="col-md-{% widthratio 12 location.count 1 %} col-sm-12 text-center">
+            <h3>{{location.last.event_location_name}}</h3>
+            <h6>{{location.last.event_location_address}}</h6>
+            {% easy_map location.last.event_location_address using 'easy_maps/map.html' %}
+          </div>
         </div>
       </div>
     </div>
