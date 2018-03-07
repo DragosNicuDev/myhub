@@ -6,30 +6,30 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 
-from events.views import EventTemplateView
+from events.views import EventTemplateView, EventDetail
 
 urlpatterns = [
-    # url(r'^$', EventTemplateView.as_view(), name='home'),
+    url(r'^$', EventTemplateView.as_view(), name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
 
     # Fobi View URLs
-    # url(r'^fobi/', include('fobi.urls.view')),
+    url(r'^fobi/', include('fobi.urls.view')),
 
     # Fobi Edit URLs
-    # url(r'^fobi/', include('fobi.urls.edit')),
+    url(r'^fobi/', include('fobi.urls.edit')),
 
     url(r'^summernote/', include('django_summernote.urls')),
 
     # Fobi DB Store plugin URLs
-    # url(r'^fobi/plugins/form-handlers/db-store/',
-    #     include('fobi.contrib.plugins.form_handlers.db_store.urls')),
+    url(r'^fobi/plugins/form-handlers/db-store/',
+        include('fobi.contrib.plugins.form_handlers.db_store.urls')),
 
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, admin.site.urls),
 
     # User management
-    # url(r'^users/', include('myhub_events.users.urls', namespace='users')),
-    # url(r'^accounts/', include('allauth.urls')),
+    url(r'^users/', include('myhub_events.users.urls', namespace='users')),
+    url(r'^accounts/', include('allauth.urls')),
 
     # Your stuff: custom urls includes go here
     url(r'^i18n/', include('django.conf.urls.i18n')),
@@ -38,11 +38,12 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += i18n_patterns(
-    url(r'^$', EventTemplateView.as_view(), name='home'),
-    url(r'^accounts/', include('allauth.urls')),
-    url(r'^users/', include('myhub_events.users.urls', namespace='users')),
+    # url(r'^$', EventTemplateView.as_view(), name='home'),
+    url(r'^(?P<pk>\d+)/$', EventDetail.as_view(), name='event-detail'),
+    # url(r'^accounts/', include('allauth.urls')),
+    # url(r'^users/', include('myhub_events.users.urls', namespace='users')),
 
-    # prefix_default_language=False
+    prefix_default_language=False
 )
 
 if settings.DEBUG:
@@ -59,3 +60,7 @@ if settings.DEBUG:
         urlpatterns = [
             url(r'^__debug__/', include(debug_toolbar.urls)),
         ] + urlpatterns
+
+admin.site.site_header = "MyHub Events Admin"
+admin.site.site_title = "MyHub Events Admin Portal"
+admin.site.index_title = "Welcome to MyHub Events"

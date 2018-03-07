@@ -11,6 +11,17 @@ from localized_fields.fields import (LocalizedCharField,
                                      LocalizedTextField,
                                      LocalizedUniqueSlugField)
 
+from .utils import create_token
+from fobi.integration.processors import IntegrationProcessor
+from fobi.models import FormEntry
+
+# from .fobi_int.helpers import (
+#     get_form_template_choices, get_success_page_template_choices
+# )
+#
+# from .fobi_int.settings import WIDGET_FORM_SENT_GET_PARAM
+
+
 
 # Create your models here.
 class Event(LocalizedModel, models.Model):
@@ -121,3 +132,40 @@ class EventLocation(models.Model):
         blank=True,
         null=True
     )
+
+
+class EventInvitee(models.Model):
+    '''Organiser can add invitees'''
+
+    event = models.ForeignKey(
+        Event,
+        on_delete=models.CASCADE
+    )
+
+    first_name = models.CharField('First Name', max_length=25)
+
+    last_name = models.CharField('Last Name', max_length=15)
+
+    email = models.EmailField(max_length=50)
+
+    token = models.CharField(max_length=15, unique=True, blank=True)
+
+    class Meta:
+        unique_together = ('event', 'email')
+
+    def __str__(self):
+        return str(self.email)
+
+    def save(self, *args, **kwargs):
+        if self.token is None or self.token == '':
+            self.token = create_token(self)
+        super().save(*args, **kwargs)
+
+
+class EventFobiForms(models.Model):
+    fobi = models.OneToOneField('fobi.FormEntry')
+    event = models.ForeignKey(Event)
+
+
+class FobiTesting(FormEntry):
+    event = models.ForeignKey(Event)

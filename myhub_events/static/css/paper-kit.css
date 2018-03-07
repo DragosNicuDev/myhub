@@ -192,8 +192,11 @@ blockquote small {
 }
 
 /*     General overwrite     */
-body {
+.section-dark {
   color: #66615b;
+}
+body {
+  color: #000;
   font-size: 14px;
   font-weight: 300;
   font-family: 'Montserrat', "Helvetica", Arial, sans-serif;

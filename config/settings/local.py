@@ -56,6 +56,11 @@ FOBI_SPECIFFIC = [
     # `django-fobi` form elements - fields
     'fobi.contrib.plugins.form_elements.fields.checkbox_select_multiple',
     'fobi.contrib.plugins.form_elements.fields.radio',
+    'fobi.contrib.plugins.form_elements.fields.input',
+    'fobi.contrib.plugins.form_elements.fields.text',
+    'fobi.contrib.plugins.form_elements.fields.textarea',
+    'fobi.contrib.plugins.form_elements.fields.select_model_object',
+    'fobi.contrib.plugins.form_elements.fields.slider',
 
     # `django-fobi` form handlers
     'fobi.contrib.plugins.form_handlers.db_store',

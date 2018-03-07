@@ -13,12 +13,16 @@
         <div class="title-brand">
           <h1 class="presentation-title">{{event.event_title}}</h1>
         </div>
+        {% if date_time.event_start_date %}
         <h2 class="presentation-subtitle text-center">
           {% trans "From" %} {{date_time.event_start_date | date:"l, j F Y, H:i"}}
         </h2>
+        {% endif %}
+        {% if date_time.event_end_date %}
         <h2 class="presentation-subtitle text-center">
           {% trans "Until" %} {{date_time.event_end_date | date:"l, j F Y, H:i"}}
         </h2>
+        {% endif %}
       </div>
     </div>
     <div class="moving-clouds" style="background-image: url('{% static 'images/clouds.png' %}'); ">
@@ -43,32 +47,46 @@
   {% endblock %}
 {% endif %}
 
-{% if location %}
   {% block location %}
   <div class="main"  id="Location">
     <div class="section section-dark">
       <div class="container">
         <div class="row example-page">
+          {% if location %}
           {% block api_js %}
           <script type="text/javascript" src="https://maps.google.com/maps/api/js?key={{gmap_key}}"></script>
           {% endblock %}
-          <div class="col-md-{% widthratio 12 location.count 1 %} col-sm-12 text-center">
+          <div class="col-md-{% widthratio 12 location|length 1 %} col-sm-12 text-center">
             <h3>{{location.first.event_location_name}}</h3>
             <h6>{{location.first.event_location_address}}</h6>
             {% easy_map location.first.event_location_address using 'easy_maps/map2.html' %}
           </div>
-          <div class="col-md-{% widthratio 12 location.count 1 %} col-sm-12 text-center">
+          <div class="col-md-{% widthratio 12 location|length 1 %} col-sm-12 text-center">
             <h3>{{location.last.event_location_name}}</h3>
             <h6>{{location.last.event_location_address}}</h6>
             {% easy_map location.last.event_location_address using 'easy_maps/map.html' %}
           </div>
+          {% else %}
+          <h1>Nope</h1>
+          {% endif %}
         </div>
       </div>
     </div>
   </div>
-  {% endblock %}
-{% endif %}
+{% endblock %}
 
-
+{% block content %}
+<div class="main"  id="Quizz">
+  <div class="section">
+    <div class="container">
+      <div class="row example-page">
+        <div class="col-md-12">
+          {% include fobi_theme.view_form_entry_ajax_template %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
 {% block javascript %}
 {% endblock javascript %}

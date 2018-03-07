@@ -1,12 +1,17 @@
 from django.contrib import admin
+from django.utils.translation import ugettext_lazy as _
 from django_summernote.admin import SummernoteModelAdmin
+
 from localized_fields.admin import LocalizedFieldsAdminMixin
 
 from .models import (
     Event,
     EventDateAndTime,
     EventDescription,
-    EventLocation)
+    EventLocation,
+    EventInvitee,
+    EventFobiForms,
+    FobiTesting)
 
 
 # Apply summernote to all TextField in model.
@@ -47,5 +52,76 @@ class EventAdmin(admin.ModelAdmin):
         EventLocationAdmin
     ]
 
+
+class EventInviteeAdmin(admin.ModelAdmin):
+    fields = (
+        'event',
+        'first_name',
+        'last_name',
+        'email',
+        'token'
+    )
+
+    list_display = [f.name for f in EventInvitee._meta.fields]
+
+
+class EventFobiFormsAdmin(admin.ModelAdmin):
+    """FormEntry admin."""
+
+    list_display = (
+        'event',
+        'name',
+        'slug',
+        'user',
+        'is_public',
+        'is_active',
+        'created',
+        'updated',
+        'is_cloneable',
+    )
+    list_editable = ('is_public', 'is_cloneable')
+    list_filter = ('is_public', 'is_cloneable')
+    readonly_fields = ('slug',)
+    radio_fields = {"user": admin.VERTICAL}
+    fieldsets = (
+        (_("Form"), {
+            'fields': (
+                'name',
+                'event',
+                'is_public',
+                'is_cloneable',
+                'active_date_from',
+                'active_date_to',
+                'inactive_page_title',
+                'inactive_page_message',
+            )
+        }),
+        (_("Custom"), {
+            'classes': ('collapse',),
+            'fields': ('success_page_title', 'success_page_message', 'action')
+        }),
+        # (_("Wizard"), {
+        #     'classes': ('collapse',),
+        #     'fields': ('form_wizard_entry', 'position',)
+        # }),
+        (_("User"), {
+            'classes': ('collapse',),
+            'fields': ('user',)
+        }),
+        (_('Additional'), {
+            'classes': ('collapse',),
+            'fields': ('slug',)
+        }),
+    )
+    # inlines = [FormElementEntryInlineAdmin, FormHandlerEntryInlineAdmin]
+
+# class FobiFormWidgetAdmin(admin.ModelAdmin):
+#     fields = '__all__'
+#
+#     list_display = [f.name for f in FobiFormWidget._meta.fields]
+
+
 admin.site.register(Event, EventAdmin)
+admin.site.register(EventInvitee, EventInviteeAdmin)
+admin.site.register(FobiTesting, EventFobiFormsAdmin)
 admin.site.register(EventDescription, SomeModelAdmin)
