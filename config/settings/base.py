@@ -66,8 +66,26 @@ LOCAL_APPS = [
     'events',
 ]
 
+
+FOBI_SPECIFFIC = [
+    # `django-fobi` core
+    'fobi',
+
+    # `django-fobi` themes
+    'fobi.contrib.themes.bootstrap3',
+
+    # `django-fobi` form elements - fields
+    'fobi.contrib.plugins.form_elements.fields.checkbox_select_multiple',
+    'fobi.contrib.plugins.form_elements.fields.radio',
+    'fobi.contrib.plugins.form_elements.fields.input',
+    'fobi.contrib.plugins.form_elements.fields.text',
+    'fobi.contrib.plugins.form_elements.fields.textarea',
+
+    # `django-fobi` form handlers
+    'fobi.contrib.plugins.form_handlers.db_store',
+]
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS + FOBI_SPECIFFIC
 
 # MIDDLEWARE CONFIGURATION
 # ------------------------------------------------------------------------------
