@@ -11,6 +11,7 @@ from events.views import EventTemplateView, EventDetail
 urlpatterns = [
     url(r'^$', EventTemplateView.as_view(), name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
+    url(r'^thank-you/$', TemplateView.as_view(template_name='events/thank_you.html'), name='thank_you'),
 
     # Fobi View URLs
     url(r'^fobi/', include('fobi.urls.view')),
@@ -39,7 +40,7 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     # url(r'^$', EventTemplateView.as_view(), name='home'),
-    url(r'^(?P<pk>\d+)/$', EventDetail.as_view(), name='event-detail'),
+    url(r'^(?P<pk>\d+)/(?P<token>[\w-]+)/$', EventDetail.as_view(), name='event-detail'),
     # url(r'^accounts/', include('allauth.urls')),
     # url(r'^users/', include('myhub_events.users.urls', namespace='users')),
 

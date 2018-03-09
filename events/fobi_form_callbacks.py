@@ -1,5 +1,5 @@
 from fobi.base import form_callback_registry
-from fobi.contrib.plugins.form_handlers.db_store.callbacks import (
+from .callbacks import (
     AutoFormDbStore
 )
 form_callback_registry.register(AutoFormDbStore)

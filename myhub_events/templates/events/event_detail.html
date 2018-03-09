@@ -6,11 +6,14 @@
 
 {% if event %}
   {% block page-header %}
+  <div class="content-center">
+  </div>
   <div class="page-header section-dark" style="background-image: url('{{event.event_main_image.url}}')">
     <div class="filter"></div>
     <div class="content-center">
       <div class="container">
         <div class="title-brand">
+          <h2 class="presentation-subtitle text-center">{% include fobi_theme.messages_snippet_template_name %}</h2>
           <h1 class="presentation-title">{{event.event_title}}</h1>
         </div>
         {% if date_time.event_start_date %}

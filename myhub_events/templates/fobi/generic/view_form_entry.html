@@ -2,6 +2,8 @@
 
 {% load i18n %}
 
+
+{% comment %}
 {% block page-title %}{% if form_entry.title %}{{ form_entry.title }}{% else %}{% trans "View form" %}{% endif %}{% endblock page-title %}
 
 {% block navbar-menu-content %}
@@ -13,10 +15,13 @@
             <li class="active"><a href="{% url 'fobi.dashboard' %}">{% trans "Forms" %}</a></li>
             <li><a href="{% url 'fobi.form_wizards_dashboard' %}">{% trans "Wizards" %}</a></li>
 {% endblock navbar-menu-right-content %}
+{% endcomment %}
 
 {% block content %}
     {% include fobi_theme.view_form_entry_ajax_template %}
 {% endblock content %}
+{% comment %}
 
 {% block sidebar-wrapper %}
 {% endblock sidebar-wrapper %}
+{% endcomment %}

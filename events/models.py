@@ -15,24 +15,15 @@ from .utils import create_token
 from fobi.integration.processors import IntegrationProcessor
 from fobi.models import FormEntry
 
-# from .fobi_int.helpers import (
-#     get_form_template_choices, get_success_page_template_choices
-# )
-#
-# from .fobi_int.settings import WIDGET_FORM_SENT_GET_PARAM
-
-
 
 # Create your models here.
 class Event(LocalizedModel, models.Model):
     '''The place where an organiser can create an event'''
 
     # Event Title
-    # event_title = models.CharField(_('Event Title'), max_length=256)
     event_title = LocalizedCharField(_('Event Title'), max_length=256)
 
     # Event slug
-    # event_slug = AutoSlugField(populate_from='event_title', default='')
     event_slug = LocalizedUniqueSlugField(populate_from='event_title')
 
     # Event creation date
@@ -93,7 +84,6 @@ class EventDescription(models.Model):
     )
 
     # Description field
-    # event_description = models.TextField()
     event_description = LocalizedTextField(_('Event Description'), null=True, required=False)
 
 
@@ -154,7 +144,7 @@ class EventInvitee(models.Model):
         unique_together = ('event', 'email')
 
     def __str__(self):
-        return str(self.email)
+        return str(self.first_name + ' ' + self.last_name)
 
     def save(self, *args, **kwargs):
         if self.token is None or self.token == '':

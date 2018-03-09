@@ -83,6 +83,7 @@ FOBI_SPECIFFIC = [
 
     # `django-fobi` form handlers
     'fobi.contrib.plugins.form_handlers.db_store',
+    'eventsformdatabase'
 ]
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS + FOBI_SPECIFFIC

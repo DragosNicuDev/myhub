@@ -1,0 +1,74 @@
+{% load static i18n %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-31417578-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-31417578-3');
+</script>
+
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.ico' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'images/apple-icon.png' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="theme-color" content="#ffffff">
+
+    <title>MyHub Events</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- Bootstrap core CSS     -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  	<link href="{% static 'css/paper-kit.css' %}" rel="stylesheet"/>
+
+    <!--     Fonts and icons     -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+    <div class="wrapper">
+      {% block page-header %}
+      <div class="page-header section-dark" style="background-image: url('{% static 'images/antoine-barres.jpg' %}')">
+        <div class="filter"></div>
+        <div class="content-center">
+          <div class="container">
+            <div class="title-brand">
+              <h1 class="presentation-title">Thank you!</h1>
+              <h2 class="presentation-subtitle text-center">{% include fobi_theme.messages_snippet_template_name %}</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="moving-clouds" style="background-image: url('{% static 'images/clouds.png' %}'); ">
+        </div>
+      </div>
+      {% endblock %}
+    </div>
+</body>
+
+<!-- Core JS Files -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!-- Switches -->
+<script src="{% static 'js/bootstrap-switch.min.js' %}"></script>
+
+<!--  Paper Kit Initialization and functons -->
+<script src="{% static 'js/paper-kit.js' %}"></script>
+<script src="{% static 'js/lightbox.min.js' %}"></script>
+
+{% block javascript %}
+{% endblock javascript %}
+
+</html>
