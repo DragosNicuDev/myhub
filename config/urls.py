@@ -6,7 +6,12 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 
-from events.views import EventTemplateView, EventDetail
+from events.views import (
+    EventTemplateView,
+    EventDetail,
+    dashboard,
+    event_export_form_entry,
+    event_import_form_entry)
 
 urlpatterns = [
     url(r'^$', EventTemplateView.as_view(), name='home'),
@@ -32,6 +37,18 @@ urlpatterns = [
     url(r'^users/', include('myhub_events.users.urls', namespace='users')),
     url(r'^accounts/', include('allauth.urls')),
 
+    # Forms dashboard
+    url(r'^dashboard/$', view=dashboard, name='fobi.dashboard'),
+    # Export form entry
+    url(r'^export/(?P<form_entry_id>\d+)/$',
+        event_export_form_entry,
+        name='event.export_form_entry'),
+
+    # Import form entry
+    url(r'^import/$',
+        event_import_form_entry,
+        name='event.import_form_entry'),
+
     # Your stuff: custom urls includes go here
     url(r'^i18n/', include('django.conf.urls.i18n')),
 
@@ -44,7 +61,7 @@ urlpatterns += i18n_patterns(
     # url(r'^accounts/', include('allauth.urls')),
     # url(r'^users/', include('myhub_events.users.urls', namespace='users')),
 
-    prefix_default_language=False
+    # prefix_default_language=False
 )
 
 if settings.DEBUG:

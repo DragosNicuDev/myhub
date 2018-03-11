@@ -50,7 +50,13 @@
           <div class="fog-low right">
             <img src="{% static 'images/fog-low.png' %}" alt="">
           </div>
-          <h2 class="presentation-subtitle text-center">Page not found</h2>
+          {% if messages %}
+            {% for message in messages %}
+              <h2 class="presentation-subtitle text-center">{{ message }}</h2>
+            {% endfor %}
+          {% else %}
+            <h2 class="presentation-subtitle text-center">Page not found</h2>
+          {% endif %}
         </div>
       </div>
     </div>

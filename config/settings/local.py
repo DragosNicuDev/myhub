@@ -15,7 +15,8 @@ from .base import *  # noqa
 # ------------------------------------------------------------------------------
 DEBUG = env.bool('DJANGO_DEBUG', default=True)
 TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
-
+# DEBUG = False
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # SECRET CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
