@@ -80,6 +80,7 @@ FOBI_SPECIFFIC = [
     'fobi.contrib.plugins.form_elements.fields.input',
     'fobi.contrib.plugins.form_elements.fields.text',
     'fobi.contrib.plugins.form_elements.fields.textarea',
+    'fobi.contrib.plugins.form_elements.fields.range_select',
 
     # `django-fobi` form handlers
     'fobi.contrib.plugins.form_handlers.db_store',

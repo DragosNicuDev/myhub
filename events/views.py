@@ -2,7 +2,9 @@ import simplejson as json
 
 from django.conf import settings
 from django.contrib import messages
-from django.http import HttpResponseForbidden
+from django.contrib.auth.decorators import login_required, permission_required
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import HttpResponseForbidden, Http404
 from django.views import View
 from django.views.generic import DetailView, ListView, TemplateView, FormView
 from django.views.generic.detail import SingleObjectMixin
@@ -11,9 +13,8 @@ from django.urls import reverse
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 
-from fobi.dynamic import assemble_form_class
-from fobi.settings import GET_PARAM_INITIAL_DATA, DEBUG
 from fobi.base import get_theme, fire_form_callbacks, submit_plugin_form_data, run_form_handlers
+from fobi.settings import GET_PARAM_INITIAL_DATA, DEBUG
 from fobi.constants import (
     CALLBACK_BEFORE_FORM_VALIDATION,
     CALLBACK_FORM_VALID_BEFORE_SUBMIT_PLUGIN_FORM_DATA,
@@ -22,13 +23,14 @@ from fobi.constants import (
     CALLBACK_FORM_INVALID
 )
 
+from fobi.dynamic import assemble_form_class
 from fobi.form_importers import (
     ensure_autodiscover as ensure_importers_autodiscover,
     form_importer_plugin_registry, get_form_importer_plugin_urls
 )
 from fobi.forms import ImportFormEntryForm
 from fobi.helpers import JSONDataExporter
-
+from fobi.decorators import permissions_required, SATISFY_ALL, SATISFY_ANY
 from fobi.models import FormEntry
 from .form_utils import prepare_form_entry_export_data, perform_form_entry_import
 
@@ -236,8 +238,8 @@ dashboard_permissions = [
 ]
 
 
-# @login_required
-# @permissions_required(satisfy=SATISFY_ANY, perms=dashboard_permissions)
+@login_required
+@permissions_required(satisfy=SATISFY_ANY, perms=dashboard_permissions)
 def dashboard(request, theme=None, template_name=None):
     """Dashboard.
 
@@ -266,9 +268,13 @@ def dashboard(request, theme=None, template_name=None):
 
     return render(request, template_name, context)
 
-
-# @login_required
-# @permissions_required(satisfy=SATISFY_ALL, perms=create_form_entry_permissions)
+create_form_entry_permissions = [
+    'fobi.add_formentry',
+    'fobi.add_formelemententry',
+    'fobi.add_formhandlerentry',
+]
+@login_required
+@permissions_required(satisfy=SATISFY_ALL, perms=create_form_entry_permissions)
 def event_export_form_entry(request, form_entry_id, template_name=None):
     """Export form entry to JSON.
 
@@ -324,8 +330,8 @@ def event_export_form_entry(request, form_entry_id, template_name=None):
     return data_exporter.export()
 
 
-# @login_required
-# @permissions_required(satisfy=SATISFY_ALL, perms=create_form_entry_permissions)
+@login_required
+@permissions_required(satisfy=SATISFY_ALL, perms=create_form_entry_permissions)
 def event_import_form_entry(request, template_name=None):
     """Import form entry.
 
