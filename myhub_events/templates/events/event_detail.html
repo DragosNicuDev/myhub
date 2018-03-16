@@ -92,4 +92,27 @@
 </div>
 {% endblock %}
 {% block javascript %}
+
+<script type="text/javascript">
+$( document ).ready(function() { //wait until body loads
+{% for field in form %}
+  {% if field.field.conditional %}
+  // Codul initial
+  var doi=$('#fobi-form input:radio[name={{field.html_name}}]');
+    {% for data in field.field.conditioned_data %}
+      var {{data}} = $('#fobi-form #{{data}}');
+      doi.change(function(){
+        var value=this.value;
+        {{data}}.addClass('d-none');
+
+      if (value == '{{field.field.conditional}}'){
+        {{data}}.removeClass('d-none');
+      }
+      });
+      // GATA COD
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+});
+</script>
 {% endblock javascript %}

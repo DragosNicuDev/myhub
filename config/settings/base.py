@@ -84,7 +84,12 @@ FOBI_SPECIFFIC = [
 
     # `django-fobi` form handlers
     'fobi.contrib.plugins.form_handlers.db_store',
-    'eventsformdatabase'
+    'eventsformdatabase',
+    'dragos_radio',
+    'dragos_checkbox_select_multiple',
+    'dragos_text',
+    'dragos_range_select',
+    'dragos_content_text',
 ]
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS + FOBI_SPECIFFIC

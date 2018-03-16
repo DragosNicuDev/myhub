@@ -1,7 +1,11 @@
 import datetime
 
 from django.contrib import messages
+from django.core import validators
 from django.http import Http404
+
+from django.forms.fields import CharField, ChoiceField, MultipleChoiceField
+from django.forms.models import ModelChoiceField
 
 from .models import Event, FobiTesting
 
@@ -18,6 +22,117 @@ from fobi.models import (
     FormWizardHandler
     )
 
+
+class DragosChoiceField(ChoiceField):
+    def __init__(self, conditional=None, conditioned_data=None,
+                is_conditioned=None, required=True, choices=None,
+                 widget=None, label=None, initial=None, help_text='',
+                 *args, **kwargs):
+        super(DragosChoiceField, self).__init__(
+            required=required, widget=widget, label=label, initial=initial,
+            help_text=help_text, choices=choices, *args, **kwargs
+        )
+        self.choices = choices
+        self.conditional = conditional
+        self.is_conditioned = is_conditioned
+        self.conditioned_data = conditioned_data
+
+
+class DragosMultipleChoiceField(MultipleChoiceField):
+    def __init__(self, conditional=None, conditioned_data=None,
+                is_conditioned=None, required=True, choices=None,
+                 widget=None, label=None, initial=None, help_text='',
+                 *args, **kwargs):
+        super(DragosMultipleChoiceField, self).__init__(
+            required=required, widget=widget, label=label, initial=initial,
+            help_text=help_text, choices=choices, *args, **kwargs
+        )
+        self.choices = choices
+        self.conditional = conditional
+        self.is_conditioned = is_conditioned
+        self.conditioned_data = conditioned_data
+
+
+class DragosCharField(CharField):
+    def __init__(self, max_length=None, min_length=None, strip=True,
+                 empty_value='', conditional=None, conditioned_data=None,
+                 is_conditioned=None, *args, **kwargs):
+        self.max_length = max_length
+        self.min_length = min_length
+        self.strip = strip
+        self.empty_value = empty_value
+        self.conditional = conditional
+        self.is_conditioned = is_conditioned
+        self.conditioned_data = conditioned_data
+
+        super(DragosCharField, self).__init__(*args, **kwargs)
+        if min_length is not None:
+            self.validators.append(validators.MinLengthValidator(int(min_length)))
+        if max_length is not None:
+            self.validators.append(validators.MaxLengthValidator(int(max_length)))
+
+
+def get_select_field_cond_data(raw_cond_data,
+                             key_type=None,
+                             value_type=None,
+                             fail_silently=True):
+    """Get select field choices.
+
+    Used in ``radio``, ``select`` and other choice based
+    fields.
+
+    :param str raw_cond_data:
+    :param type key_type:
+    :param type value_type:
+    :param bool fail_silently:
+    :return list:
+    """
+    cond_data = []  # Holds return value
+    keys = set([])  # For checking uniqueness of keys
+    values = set([])  # For checking uniqueness of values
+
+    # Looping through the raw data
+    for cond in raw_cond_data.split('\n'):
+        cond = cond.strip()
+        print('cond: ', cond)
+        # If comma separated key, value
+        if ',' in cond:
+            key, value = cond.split(',', 1)
+            key = key.strip()
+
+            # If type specified, cast to the type
+            if key_type and key is not None:
+                try:
+                    key = key_type(key)
+                except (ValueError, TypeError):
+                    return [] if fail_silently else None
+
+            value = value.strip()
+            # If type specified, cast to the type
+            if value_type and value is not None:
+                try:
+                    value = value_type(value)
+                except (ValueError, TypeError):
+                    return [] if fail_silently else None
+
+            if key is not None \
+                    and key not in keys \
+                    and value not in values:
+                cond_data.append((key, value))
+                keys.add(key)
+                values.add(value)
+
+        # If key is also the value
+        else:
+            cond = cond.strip()
+            if cond is not None \
+                    and cond not in keys \
+                    and cond not in values:
+                cond_data.append(cond)
+                keys.add(cond)
+                values.add(cond)
+
+    return cond_data
 
 def prepare_form_entry_export_data(form_entry,
                                    form_element_entries=None,
