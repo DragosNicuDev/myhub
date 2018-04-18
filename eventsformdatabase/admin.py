@@ -59,7 +59,7 @@ class BaseSavedEventFormDataEntryAdmin(admin.ModelAdmin):
 class SavedEventFormDataEntryAdmin(BaseSavedEventFormDataEntryAdmin):
     """Saved form data entry admin."""
 
-    list_display = ('form_entry', 'user', 'invitee', 'formatted_saved_data', 'created',)
+    list_display = ('form_entry', 'user', 'invitee', 'dragos_saved_data', 'created',)
     list_filter = ('form_entry', 'user',)
     readonly_fields = ('created', 'formatted_saved_data')
     fieldsets = (

@@ -13,7 +13,7 @@ from localized_fields.fields import (LocalizedCharField,
 
 from .utils import create_token
 from fobi.integration.processors import IntegrationProcessor
-from fobi.models import FormEntry
+from fobi.models import FormEntry, FormElementEntry
 
 
 # Create your models here.
@@ -24,7 +24,7 @@ class Event(LocalizedModel, models.Model):
     event_title = LocalizedCharField(_('Event Title'), max_length=256)
 
     # Event slug
-    event_slug = LocalizedUniqueSlugField(populate_from='event_title')
+    slug = LocalizedUniqueSlugField(populate_from='event_title')
 
     # Event creation date
     event_date_created = models.DateTimeField(default=timezone.now,
@@ -157,5 +157,17 @@ class EventFobiForms(models.Model):
     event = models.ForeignKey(Event)
 
 
-class FobiTesting(FormEntry):
-    event = models.ForeignKey(Event)
+class EventFormEntry(FormEntry):
+    event = models.ForeignKey(
+        Event,
+        verbose_name=_("EventFormEntry"),
+        on_delete=models.CASCADE
+    )
+
+
+class EventFormElementEntry(FormElementEntry):
+    event = models.ForeignKey(
+        Event,
+        verbose_name=_("EventFormElementEntry"),
+        on_delete=models.CASCADE
+    )

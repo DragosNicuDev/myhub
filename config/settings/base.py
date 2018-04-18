@@ -55,7 +55,8 @@ THIRD_PARTY_APPS = [
     'django_summernote',
     'imagekit',
     'psqlextra',
-    'localized_fields.apps.LocalizedFieldsConfig'
+    'localized_fields.apps.LocalizedFieldsConfig',
+    'graphene_django'
 ]
 
 # Apps specific for this project go here.
@@ -66,6 +67,9 @@ LOCAL_APPS = [
     'events',
 ]
 
+GRAPHENE = {
+    'SCHEMA': 'myhub_events.schema.schema'
+}
 
 FOBI_SPECIFFIC = [
     # `django-fobi` core

@@ -1,3 +1,4 @@
+import re
 import simplejson as json
 
 from django.conf import settings
@@ -31,7 +32,7 @@ from fobi.form_importers import (
 from fobi.forms import ImportFormEntryForm
 from fobi.helpers import JSONDataExporter
 from fobi.decorators import permissions_required, SATISFY_ALL, SATISFY_ANY
-from fobi.models import FormEntry
+from fobi.models import FormEntry, FormElementEntry
 from .form_utils import prepare_form_entry_export_data, perform_form_entry_import
 
 # Create your views here.
@@ -42,11 +43,100 @@ from .models import (
     EventLocation,
     EventInvitee,
     EventFobiForms,
-    FobiTesting)
+    EventFormEntry)
+
+from eventsformdatabase.models import SavedEventFormDataEntry
+from django.core.serializers import serialize
+
 
 
 class EventTemplateView(TemplateView):
     template_name = 'home.html'
+
+
+class ReportsTemplateView(DetailView):
+    model = Event
+    template_name = 'events/reports.html'
+
+    def get_context_data(self, **kwargs):
+       context = super().get_context_data(**kwargs)
+
+       # Get Queryset of the Invitees who responded to the form
+       responded_invitees = SavedEventFormDataEntry.objects\
+                                    .order_by('invitee', '-created')\
+                                    .distinct('invitee')\
+                                    .select_related('invitee')
+
+       # Use in template the queryset for the Invitees that responded to the form
+       context['responded_invitees'] = responded_invitees
+       context['responders'] = responded_invitees.count()
+
+       json_data = serialize('json',
+                         responded_invitees,
+                         fields=('dragos_saved_data',))
+
+       data = json.loads(json_data)
+
+       answer_list = {}
+       for x in data:
+           for y in x['fields'].items():
+               f = json.loads(y[1])
+               for questions, answers in f.items():
+                   for answer in answers['answer']:
+                       answer_list.setdefault(questions, {})\
+                                .setdefault('answer', []).append(answer)
+                   for full_name in answers['full_name']:
+                       answer_list.setdefault(questions, {})\
+                                .setdefault('invitee', []).append(full_name)
+                   for email in answers['email']:
+                       answer_list.setdefault(questions, {})\
+                                .setdefault('email', []).append(email)
+
+       answer = {}
+       answer.setdefault(
+            'questions',
+            [{'label': labels,
+              'answers': [{'answer': keys, 'stats': {
+                    'who': [answered[0]\
+                        for answered in zip(a['invitee'], a['answer'])\
+                            if keys == answered[1]],
+                    'count': len([answered[0]\
+                        for answered in zip(a['invitee'], a['answer'])\
+                            if keys == answered[1]])
+                  }}\
+               for keys in set(a['answer'])]}\
+                for labels, a in answer_list.items()])
+
+       context['answers'] = answer['questions']
+
+       total_invitees = EventInvitee.objects\
+                                    .filter(event_id = self.kwargs.get('pk'))\
+                                    .distinct('email')
+
+       # Get the total number of the Invitees for an Event
+       context['total_invitees'] = total_invitees.count()
+
+       who_responded = []
+       respondents = responded_invitees.values_list(
+                            'invitee__email',
+                            'invitee__first_name',
+                            'invitee__last_name')
+
+       for respondent in respondents:
+           who_responded.append(respondent)
+
+       total_number_invitees = []
+       number_invitees = total_invitees.values_list(
+                            'email',
+                            'first_name',
+                            'last_name')
+
+       for number_invitee in number_invitees:
+           total_number_invitees.append(number_invitee)
+
+       context['didnt_respond'] =  list(set(who_responded).symmetric_difference(total_number_invitees))
+
+       return context
 
 
 class EventDetailView(DetailView):
@@ -74,12 +164,10 @@ class EventDetailView(DetailView):
        context['gmap_key'] = settings.EASY_MAPS_GOOGLE_MAPS_API_KEY
        context['location'] = EventLocation.objects.filter(
            event__pk = self.kwargs.get('pk')
-       )
-       context['invitee'] = EventInvitee.objects.filter(
-           event__pk = self.kwargs.get('pk')
-       )
-       form_entry = FobiTesting.objects.select_related('user') \
-                             .get(event__pk = self.kwargs.get('pk'))
+       ).select_related('event')
+
+       form_entry = EventFormEntry.objects.select_related('user') \
+                                  .get(event__pk = self.kwargs.get('pk'))
        form_element_entries = form_entry.formelemententry_set.all()[:]
        form_cls = assemble_form_class(
            form_entry,
@@ -117,7 +205,7 @@ class FobiFormPOST(SingleObjectMixin, FormView):
        context['gmap_key'] = settings.EASY_MAPS_GOOGLE_MAPS_API_KEY
        context['location'] = EventLocation.objects.filter(
            event__pk = self.kwargs.get('pk')
-       )
+           ).select_related('event')
        context['invitee'] = EventInvitee.objects.filter(
            event__pk = self.kwargs.get('pk')
        )
@@ -125,7 +213,7 @@ class FobiFormPOST(SingleObjectMixin, FormView):
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
-        form_entry = FobiTesting._default_manager.select_related('user') \
+        form_entry = EventFormEntry._default_manager.select_related('user') \
                           .get(event__pk = self.kwargs.get('pk'))
         form_element_entries = form_entry.formelemententry_set.all()[:]
         # This is where the most of the magic happens. Our form is being built
@@ -199,7 +287,7 @@ class FobiFormPOST(SingleObjectMixin, FormView):
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        form_entry = FobiTesting._default_manager.select_related('user') \
+        form_entry = EventFormEntry._default_manager.select_related('user') \
                           .get(event__pk = self.kwargs.get('pk'))
         form_element_entries = form_entry.formelemententry_set.all()[:]
         # This is where the most of the magic happens. Our form is being built
@@ -248,7 +336,7 @@ def dashboard(request, theme=None, template_name=None):
     :param string template_name:
     :return django.http.HttpResponse:
     """
-    form_entries = FobiTesting._default_manager \
+    form_entries = EventFormEntry._default_manager \
                             .filter(user__pk=request.user.pk) \
                             .select_related('user')
 
@@ -284,7 +372,7 @@ def event_export_form_entry(request, form_entry_id, template_name=None):
     :return django.http.HttpResponse:
     """
     try:
-        form_entry = FobiTesting._default_manager \
+        form_entry = EventFormEntry._default_manager \
                               .get(pk=form_entry_id, user__pk=request.user.pk)
 
     except ObjectDoesNotExist as err:

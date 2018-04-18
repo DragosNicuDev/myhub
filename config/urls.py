@@ -8,13 +8,23 @@ from django.views import defaults as default_views
 
 from events.views import (
     EventTemplateView,
+    ReportsTemplateView,
+    # GenericReportsTemplateView,
     EventDetail,
     dashboard,
     event_export_form_entry,
     event_import_form_entry)
 
+from graphene_django.views import GraphQLView
+
 urlpatterns = [
     url(r'^$', EventTemplateView.as_view(), name='home'),
+    url(r'^graphql', GraphQLView.as_view(graphiql=True)),
+    # url(r'^(?P<pk>\d+)/$', EventDetail.as_view(), name='event-detail'),
+    # url(r'^(?P<slug>[\w\-]+)/$', EventDetail.as_view(), name='event-detail'),
+
+    url(r'^(?P<pk>\d+)/reports/$', ReportsTemplateView.as_view(), name='reports'),
+    # url(r'^(?P<pk>\d+)/reports/generic/$', GenericReportsTemplateView.as_view(), name='generic_reports'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
     url(r'^thank-you/$', TemplateView.as_view(template_name='events/thank_you.html'), name='thank_you'),
 
@@ -48,7 +58,7 @@ urlpatterns = [
     url(r'^import/$',
         event_import_form_entry,
         name='event.import_form_entry'),
-
+    # url(r'^(?P<slug>[\w\-]+)/$', EventDetail.as_view(), name='event-detail'),
     # Your stuff: custom urls includes go here
     url(r'^i18n/', include('django.conf.urls.i18n')),
 
@@ -57,7 +67,12 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     # url(r'^$', EventTemplateView.as_view(), name='home'),
+    # url(r'^(?P<slug>[\w\-]+)/(?P<token>[\w-]+)/$', EventDetail.as_view(), name='event-detail'),
+
     url(r'^(?P<pk>\d+)/(?P<token>[\w-]+)/$', EventDetail.as_view(), name='event-detail'),
+    # url(r'^(?P<pk>\d+)/$', EventDetail.as_view(), name='event-detail'),
+    # url(r'^(?P<slug>[\w\-]+)/(?P<token>[\w-]+)/$', EventDetail.as_view(), name='event-detail'),
+    # url(r'^(?P<slug>[\w\-]+)/$', EventDetail.as_view(), name='event-detail'),
     # url(r'^accounts/', include('allauth.urls')),
     # url(r'^users/', include('myhub_events.users.urls', namespace='users')),
 

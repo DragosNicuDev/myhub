@@ -1,6 +1,9 @@
 import bleach
 import simplejson as json
 from six import python_2_unicode_compatible, string_types
+from django.core.serializers import serialize
+from django.contrib.postgres.fields import JSONField
+from collections import defaultdict, Counter
 
 from django.conf import settings
 from django.db import models
@@ -44,6 +47,10 @@ class AbstractSavedEventFormDataEntry(models.Model):
         null=True,
         blank=True
     )
+    saved_data = models.TextField(_("Plugin data"), null=True, blank=True)
+    dragos_saved_data = models.TextField(_("Dragos Plugin data"), null=True, blank=True)
+    created = models.DateTimeField(_("Date created"), auto_now_add=True)
+
     invitee = models.ForeignKey(
         EventInvitee,
         verbose_name=_("Invitee"),
@@ -51,8 +58,6 @@ class AbstractSavedEventFormDataEntry(models.Model):
         blank=True,
         on_delete=models.CASCADE
     )
-    saved_data = models.TextField(_("Plugin data"), null=True, blank=True)
-    created = models.DateTimeField(_("Date created"), auto_now_add=True)
 
     class Meta(object):
         """Meta options."""

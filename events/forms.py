@@ -6,7 +6,7 @@ from django import forms
 from django.forms.models import modelformset_factory
 from django.utils.translation import ugettext, ugettext_lazy as _
 
-from .models import FobiTesting
+from .models import EventFormEntry
 
 from fobi.base import get_theme
 from fobi.models import FormEntry, FormElementEntry

@@ -33,7 +33,6 @@ class DragosCheckboxSelectMultipleInputPlugin(FormFieldPlugin):
                                  form_element_entries=None, **kwargs):
         """Get form field instances."""
         choices = self.get_choices()
-        print('choices: ', choices)
         conditioned_data = get_select_field_cond_data(self.data.conditioned_data)
 
         field_kwargs = {

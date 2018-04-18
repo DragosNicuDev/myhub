@@ -11,7 +11,7 @@ from .models import (
     EventLocation,
     EventInvitee,
     EventFobiForms,
-    FobiTesting)
+    EventFormEntry)
 
 
 # Apply summernote to all TextField in model.
@@ -41,7 +41,8 @@ class EventLocationAdmin(admin.TabularInline):
 class EventAdmin(admin.ModelAdmin):
     list_display = (
         'event_title',
-        'event_slug',
+        'slug',
+        # 'e_slug',
         'event_user',
         'event_date_created'
     )
@@ -123,5 +124,5 @@ class EventFobiFormsAdmin(admin.ModelAdmin):
 
 admin.site.register(Event, EventAdmin)
 admin.site.register(EventInvitee, EventInviteeAdmin)
-admin.site.register(FobiTesting, EventFobiFormsAdmin)
+admin.site.register(EventFormEntry, EventFobiFormsAdmin)
 admin.site.register(EventDescription, SomeModelAdmin)

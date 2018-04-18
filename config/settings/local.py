@@ -65,7 +65,7 @@ FOBI_SPECIFFIC = [
 
     # `django-fobi` form handlers
     'fobi.contrib.plugins.form_handlers.db_store',
-    'eventsformdatabase'
+    'eventsformdatabase',
 ]
 
 FOBI_DEBUG = True

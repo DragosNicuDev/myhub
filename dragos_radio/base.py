@@ -20,7 +20,7 @@ from fobi.helpers import (
     get_model_name_for_object,
     get_select_field_choices
 )
-from fobi.models import FormElementEntry, FormEntry
+
 from events.models import Event
 from . import UID
 from .forms import DragosRadioInputForm
@@ -82,8 +82,6 @@ class DragosRadioInputPlugin(FormFieldPlugin):
             # Get choices
             choices = dict(get_select_field_choices(self.data.choices))
             conditioned_data = dict(get_select_field_choices(self.data.conditioned_data))
-            # print('choices:', choices)
-            # print(conditioned_data)
 
             if value in choices:
                 # Handle the submitted form value

@@ -50,7 +50,6 @@ class AutoFormDbStore(FormCallback):
             form,
             form_element_entries
         )
-        print(request.path.split('/')[-2])
 
         for key, value in cleaned_data.items():
             if isinstance(value, (datetime.datetime, datetime.date)):
@@ -58,11 +57,40 @@ class AutoFormDbStore(FormCallback):
                     if hasattr(value, 'isoformat') \
                     else value
 
+        gigi = EventInvitee.objects\
+                .values_list('first_name', 'last_name', 'email')\
+                .get(token = request.path.split('/')[-2])
+
+        formatted_data = [
+                {
+                'label': value,
+                'html_name': key,
+                'answer': cleaned_data.get(key, ''),
+                'first_name': gigi[0],
+                'last_name': gigi[1],
+                'email': gigi[2]}
+                 for key, value in field_name_to_label_map.items()]
+
+        answer = {}
+        for y in formatted_data:
+            if type(y['answer']) is list:
+                for an in y['answer']:
+                    answer.setdefault(y['label'], {})\
+                        .setdefault('answer', []).append(an)
+                    answer.setdefault(y['label'], {}).setdefault('full_name', []).append(y['first_name'] + ' ' + y['last_name'])
+                    answer.setdefault(y['label'], {}).setdefault('email', []).append(y['email'])
+            elif type(y['answer']) is str:
+                answer.setdefault(y['label'], {})\
+                    .setdefault('answer', []).append(y['answer'])
+                answer.setdefault(y['label'], {}).setdefault('full_name', []).append(y['first_name'] + ' ' + y['last_name'])
+                answer.setdefault(y['label'], {}).setdefault('email', []).append(y['email'])
+
         saved_form_data_entry = SavedEventFormDataEntry(
             form_entry=form_entry,
             user=request.user if request.user and request.user.pk else None,
             form_data_headers=json.dumps(field_name_to_label_map),
             saved_data=json.dumps(cleaned_data),
+            dragos_saved_data=json.dumps(answer),
             invitee=EventInvitee.objects.get(token = request.path.split('/')[-2])
         )
         saved_form_data_entry.save()

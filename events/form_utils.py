@@ -7,7 +7,7 @@ from django.http import Http404
 from django.forms.fields import CharField, ChoiceField, MultipleChoiceField
 from django.forms.models import ModelChoiceField
 
-from .models import Event, FobiTesting
+from .models import Event, EventFormEntry
 
 from fobi.base import (
     form_element_plugin_registry,
@@ -94,7 +94,6 @@ def get_select_field_cond_data(raw_cond_data,
     # Looping through the raw data
     for cond in raw_cond_data.split('\n'):
         cond = cond.strip()
-        print('cond: ', cond)
         # If comma separated key, value
         if ',' in cond:
             key, value = cond.split(',', 1)
@@ -224,7 +223,7 @@ def perform_form_entry_import(request, form_data):
         )
         raise Http404('Event does not Exist!')
 
-    form_entry = FobiTesting(**form_data)
+    form_entry = EventFormEntry(**form_data)
 
     form_entry.name += (" (imported on {0})").format(
         datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
