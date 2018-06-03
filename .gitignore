@@ -7,6 +7,9 @@ __pycache__/
 # C extensions
 *.so
 
+# Remove local settings
+config/settings/local.py
+
 # Distribution / packaging
 .Python
 build/
@@ -304,5 +307,3 @@ pip-selfcheck.json
 
 
 myhub_events/media/
-
-
