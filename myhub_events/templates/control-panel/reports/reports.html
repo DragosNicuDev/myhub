@@ -1,0 +1,141 @@
+{% extends "../control_panel_base.html" %}
+
+
+{% block control-panel-content %}
+   <!-- Container-fluid starts -->
+   <!-- Main content starts -->
+   <div class="container-fluid">
+    <div class="row">
+        <div class="main-header">
+            <h4>Our Wedding - Reports {{nominal_invitees.pk}}</h4>
+        </div>
+    </div>
+    <!-- 4-blocks row start -->
+    <div class="row m-b-30 dashboard-header">
+      <div class="col-lg-6">
+        <div class="col-sm-12 card dashboard-product">
+          <span>How many invitees have responded</span>
+          <h2 class="dashboard-total-products counter">{{responders}} out of {{total_invitees}}</h2>
+        </div>
+      </div>
+    </div>
+<!-- 2-1 block start -->
+
+
+<div class="row">
+  <!-- Start of Invitees who didn't responded -->
+  <div class="col-xl-6 col-lg-12">
+    <div class="card">
+      <div class="card-block">
+        <div class="table-responsive">
+          <table class="table m-b-0 photo-table">
+            <thead>
+              <tr>
+                <th>Invitees who didn't responded</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for who in didnt_respond %}
+              <tr>
+                <td>
+                  {{who.1}} {{who.2}}<br>
+                  {{who.0}}
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Invitees who didn't responded -->
+
+  <!-- Start of Invitees who responded -->
+  <div class="col-xl-6 col-lg-12">
+    <div class="card">
+      <div class="card-block">
+        <div class="table-responsive">
+          <table class="table m-b-0 photo-table">
+            <thead>
+              <tr>
+                <th>Invitees who responded</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for invitee in responded_invitees %}
+              <tr>
+                <td>
+                  {{invitee.invitee}}<br>
+                  {{invitee.invitee.email}}
+                </td>
+                <td>
+                  {{invitee.created}}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Invitees who responded -->
+</div>
+<!-- End of Invitees who did and didn't responded -->
+
+<div class="row">
+  <!-- Start of Invitees who didn't responded -->
+  <div class="col-xl-12 col-lg-12">
+    <div class="card">
+      <div class="card-block">
+        <div class="table-responsive">
+          <table class="table" id="example">
+            <thead>
+              <th>Question</th>
+              <th>Answer</th>
+              <th>Total</th>
+              <th>Invitee</th>
+            </thead>
+            <tbody>
+              {% for question in answers %}
+                <tr>
+                  <td>
+                    <h4>{{question.label}}</h4>
+                  </td>
+                  <td>
+                    {% for answer in question.answers %}
+                      {{answer.answer}}{% if not forloop.last %}<hr>{% endif %}
+                      {% endfor %}
+                  </td>
+                  <td>
+                    {% for answer in question.answers %}
+                      {{answer.stats.count}}{% if not forloop.last %}<hr>{% endif %}
+                      {% endfor %}
+                    </td>
+                    <td>
+                      {% for invitees in question.answers %}
+                        {{invitees.stats.who|cut:"'"|cut:"]"|cut:"["}}{% if not forloop.last %}<hr>{% endif %}
+                        {# {{invitees.stats.who.1}}{% if not forloop.last %}<hr>{% endif %} #}
+                        {% for invitee in invitees.stats.who %}
+                        {# {% if invitees.stats.who in invitees.answer %} #}
+                        {# {{invitee}}{% if forloop.last or invitees.stats.who|length > 1 %}<hr>{% endif %} #}
+                        {# {{inv}}{% if not forloop.last %}<hr>{% endif %} #}
+
+                        {# {% endif %} #}
+                        {% endfor %}
+                      {% endfor %}
+                    </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Invitees who responded -->
+</div>
+<!-- End of Invitees who did and didn't responded -->
+{% endblock %}

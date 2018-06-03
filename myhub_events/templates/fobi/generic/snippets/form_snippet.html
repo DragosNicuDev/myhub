@@ -12,6 +12,7 @@
   {% include fobi_theme.form_non_field_and_hidden_errors_snippet_template %}
 {% endif %}
 {% endblock form_non_field_and_hidden_errors %}
+
 {% for field in form %}
   {% if field.is_hidden %}
     <div class="{% block form_element_wrapper_hidden_html_class %}{% endblock %}">
@@ -19,7 +20,7 @@
     </div>
   {% else %}
     <div class="{% spaceless %}
-      {% block form_element_wrapper_html_class %}form-group{% endblock %} row 
+      {% block form_element_wrapper_html_class %}form-group{% endblock %} row
       {% if field.errors %}
         {% block form_element_wrapper_error_html_class %}{% endblock %}
       {% endif %}{% if field.field.is_conditioned %} d-none{% endif %}
@@ -36,7 +37,7 @@
           {% for choice_value, choice_label in field.field.choices %}
             <div class="radio">
               <label for="{{ field.html_name }}_{{ forloop.counter0 }}">
-                <input type="radio" id="{{ field.html_name }}_{{ forloop.counter0 }}" name="{{ field.html_name }}" value="{{ choice_value }}"{% if field.value == choice_value %}checked{% endif %}>
+                <input type="radio" id="{{ field.html_name }}_{{ forloop.counter0 }}" name="{{ field.html_name }}" value="{{ choice_value }}"{% if field.value == choice_value %}checked{% endif %} {% if field.field.required %}required='required'{% endif %}>
                 {{ choice_label }}
               </label>
             </div>
@@ -45,7 +46,7 @@
           {% for choice_value, choice_label in field.field.choices %}
             <div class="checkbox">
               <label for="{{ field.html_name }}_{{ forloop.counter0 }}">
-                <input type="checkbox" id="{{ field.html_name }}_{{ forloop.counter0 }}" name="{{ field.html_name }}" value="{{ choice_value }}"{% if choice_value in field.value %}checked{% endif %}>
+                <input type="checkbox" id="{{ field.html_name }}_{{ forloop.counter0 }}" name="{{ field.html_name }}" value="{{ choice_value }}"{% if choice_value in field.value %}checked{% endif %} {% if field.field.required %}required='required'{% endif %}>
                 {{ choice_label }}
               </label>
             </div>

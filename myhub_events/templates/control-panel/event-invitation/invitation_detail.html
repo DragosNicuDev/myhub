@@ -1,0 +1,25 @@
+{% extends "../control_panel_base.html" %}
+
+
+{% block control-panel-content %}
+<div class="row">
+  <div class="col-lg-12">
+    {# {% for obj in object_list %} #}
+      {# <img src="{{object.event.event_main_image.url}}" alt=""> #}
+    {# {% endfor %} #}
+  </div>
+</div>
+<div class="row">
+  <!-- Start of Invitees who didn't responded -->
+  <div class="col-xl-12 col-lg-12">
+    <div class="card">
+      <div class="card-block">
+        <h3>Subject: {{object.subject}}</h3>
+        <p>{{object.body|safe}}</p>
+      </div>
+    </div>
+  </div>
+  <!-- End of Invitees who responded -->
+</div>
+
+{% endblock %}

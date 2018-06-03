@@ -54,13 +54,21 @@ class DragosRadioInputPlugin(FormFieldPlugin):
             'label': self.data.label,
             'help_text': self.data.help_text,
             'initial': self.data.initial,
-            'required': self.data.required,
+            # 'required': self.data.required,
+            'required': 'required',
             'conditional': self.data.conditional,
             'conditioned_data': conditioned_data,
             'is_conditioned': self.data.is_conditioned,
+            'conditioned_by': self.data.conditioned_by,
             'choices': choices,
             'widget': RadioSelect(attrs=widget_attrs),
         }
+
+        if request:
+            post = request.POST.get('self.data.name')
+            if self.data.conditional != post:
+                self.data.required = False
+                field_kwargs['required'] = self.data.required
 
         return [(self.data.name, DragosChoiceField, field_kwargs)]
 

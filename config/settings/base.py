@@ -56,7 +56,8 @@ THIRD_PARTY_APPS = [
     'imagekit',
     'psqlextra',
     'localized_fields.apps.LocalizedFieldsConfig',
-    'graphene_django'
+    'graphene_django',
+    'anymail',
 ]
 
 # Apps specific for this project go here.
@@ -65,10 +66,18 @@ LOCAL_APPS = [
     'myhub_events.users.apps.UsersConfig',
     # Your stuff: custom apps go here
     'events',
+    'invitations',
+
 ]
 
 GRAPHENE = {
     'SCHEMA': 'myhub_events.schema.schema'
+}
+
+ANYMAIL = {
+    "MAILGUN_API_KEY": "key-7a4ff32900b675a2142cbc92b4052389",
+    'WEBHOOK_SECRET': 'ifPdm7oyP1JarDPO:jqU7mzrDt1qMEcdx',
+    "MAILGUN_SENDER_DOMAIN": "sandboxa5c61fc0e55646b4800d7532cc0a6449.mailgun.org",
 }
 
 FOBI_SPECIFFIC = [
@@ -131,7 +140,9 @@ FIXTURE_DIRS = (
 
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------
-EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
+# EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
+EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+DEFAULT_FROM_EMAIL = "volutia@gmail.com"
 
 # MANAGER CONFIGURATION
 # ------------------------------------------------------------------------------

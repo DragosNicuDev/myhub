@@ -1,0 +1,48 @@
+{% extends "../control_panel_base.html" %}
+
+
+{% block control-panel-content %}
+<div class="row">
+  <!-- Start of Invitees who didn't responded -->
+  <div class="col-xl-12 col-lg-12">
+    <div class="card">
+      <div class="card-block">
+        <div class="table-responsive">
+          <table class="table" id="example">
+            <thead>
+              <th>Event</th>
+              <th>Subject</th>
+              <th>Date Created</th>
+              <th>Date Modified</th>
+            </thead>
+            <tbody>
+              {% for obj in object_list %}
+                <tr>
+                  <td>
+                    <h4>
+                      <a href="{% url 'controlpanel:invitation_detail' pk=obj.pk %}">
+                        {{obj.event}}
+                      </a>
+                    </h4>
+                  </td>
+                  <td>
+                    {{obj.subject}}
+                  </td>
+                  <td>
+                    {{obj.date_created}}
+                  </td>
+                  <td>
+                    {{obj.date_modified}}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Invitees who responded -->
+</div>
+
+{% endblock %}

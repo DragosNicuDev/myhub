@@ -1,8 +1,11 @@
+from django import forms
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from django_summernote.admin import SummernoteModelAdmin
 
 from localized_fields.admin import LocalizedFieldsAdminMixin
+from localized_fields.util import get_language_codes
+from ckeditor.widgets import CKEditorWidget
 
 from .models import (
     Event,
@@ -12,6 +15,21 @@ from .models import (
     EventInvitee,
     EventFobiForms,
     EventFormEntry)
+
+
+class PostAdminForm(forms.ModelForm):
+    event_description = forms.CharField(widget=CKEditorWidget())
+    class Meta:
+        model = EventDescription
+        fields = ('event_description', )
+        # fields = '__all__'
+
+class PostAdmin(admin.ModelAdmin):
+    event_description = forms.CharField(widget=CKEditorWidget())
+    form = PostAdminForm
+    exclude = ('event', )
+
+admin.site.register(EventDescription, PostAdmin)
 
 
 # Apply summernote to all TextField in model.
@@ -28,17 +46,17 @@ class EventTime(admin.TabularInline):
     extra = 0
 
 
-class EventDescAdmin(admin.TabularInline):
+class EventDescAdmin(LocalizedFieldsAdminMixin, admin.TabularInline):
     model = EventDescription
     extra = 0
 
 
-class EventLocationAdmin(admin.TabularInline):
+class EventLocationAdmin(LocalizedFieldsAdminMixin, admin.TabularInline):
     model = EventLocation
     extra = 0
 
 
-class EventAdmin(admin.ModelAdmin):
+class EventAdmin(LocalizedFieldsAdminMixin, admin.ModelAdmin):
     list_display = (
         'event_title',
         'slug',
@@ -125,4 +143,4 @@ class EventFobiFormsAdmin(admin.ModelAdmin):
 admin.site.register(Event, EventAdmin)
 admin.site.register(EventInvitee, EventInviteeAdmin)
 admin.site.register(EventFormEntry, EventFobiFormsAdmin)
-admin.site.register(EventDescription, SomeModelAdmin)
+# admin.site.register(EventDescription, SomeModelAdmin)

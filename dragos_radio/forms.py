@@ -24,6 +24,7 @@ class DragosRadioInputForm(forms.Form, BaseFormFieldPluginForm):
         ("initial", ""),
         ("conditional", ""),
         ("conditioned_data", ""),
+        ("conditioned_by", ""),
         ("is_conditioned", ""),
         ("required", False)
     ]
@@ -89,6 +90,14 @@ class DragosRadioInputForm(forms.Form, BaseFormFieldPluginForm):
     )
     conditional = forms.CharField(
         label=_("Conditional"),
+        # choices=[],
+        required=False,
+        widget=forms.widgets.TextInput(
+            attrs={'class': theme.form_element_html_class}
+        )
+    )
+    conditioned_by = forms.CharField(
+        label=_("Conditioned by"),
         # choices=[],
         required=False,
         widget=forms.widgets.TextInput(

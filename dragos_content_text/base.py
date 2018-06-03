@@ -3,12 +3,15 @@ from __future__ import absolute_import
 from collections import OrderedDict
 from uuid import uuid4
 
+from events.form_utils import DragosCharField
 from django.utils.encoding import smart_str
+from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
 from nonefield.fields import NoneField
 
-from fobi.base import FormElementPlugin
+from fobi.base import FormElementPlugin, FormFieldPlugin
+from events.form_utils import DragosNoneField
 
 from . import UID
 from .forms import DragosContentTextForm
@@ -58,6 +61,6 @@ class DragosContentTextPlugin(FormElementPlugin):
             'initial': self.get_rendered_text(),
             'required': False,
             'label': '',
+            'is_conditioned': self.data.is_conditioned,
         }
-
-        return [(self.data.name, NoneField, field_kwargs)]
+        return [(slugify(self.data.text).replace('-', '_'), DragosNoneField, field_kwargs)]

@@ -4,7 +4,9 @@ from django.contrib import messages
 from django.core import validators
 from django.http import Http404
 
-from django.forms.fields import CharField, ChoiceField, MultipleChoiceField
+from dragos_content_text.widget import DragosNoneWidget
+
+from django.forms.fields import CharField, ChoiceField, Field, MultipleChoiceField
 from django.forms.models import ModelChoiceField
 
 from .models import Event, EventFormEntry
@@ -23,9 +25,25 @@ from fobi.models import (
     )
 
 
+class DragosNoneField(Field):
+    widget = DragosNoneWidget
+
+    def __init__(self, required=True, widget=None, label=None, initial=None,
+                 conditional=None, conditioned_data=None, is_conditioned=None,
+                 help_text='', error_messages=None, show_hidden_initial=False,
+                 validators=(), localize=False, disabled=False, label_suffix=None):
+        super().__init__(
+            required=required, widget=widget, label=label, initial=initial,
+            help_text=help_text)
+        self.conditional = conditional
+        self.is_conditioned = is_conditioned
+        self.conditioned_data = conditioned_data
+
+
+
 class DragosChoiceField(ChoiceField):
     def __init__(self, conditional=None, conditioned_data=None,
-                is_conditioned=None, required=True, choices=None,
+                is_conditioned=None, conditioned_by=None, required=True, choices=None,
                  widget=None, label=None, initial=None, help_text='',
                  *args, **kwargs):
         super(DragosChoiceField, self).__init__(
@@ -36,6 +54,7 @@ class DragosChoiceField(ChoiceField):
         self.conditional = conditional
         self.is_conditioned = is_conditioned
         self.conditioned_data = conditioned_data
+        self.conditioned_by = conditioned_by
 
 
 class DragosMultipleChoiceField(MultipleChoiceField):

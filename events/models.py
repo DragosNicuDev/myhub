@@ -12,7 +12,6 @@ from localized_fields.fields import (LocalizedCharField,
                                      LocalizedUniqueSlugField)
 
 from .utils import create_token
-from fobi.integration.processors import IntegrationProcessor
 from fobi.models import FormEntry, FormElementEntry
 
 

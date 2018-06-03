@@ -8,8 +8,7 @@ from django.views import defaults as default_views
 
 from events.views import (
     EventTemplateView,
-    ReportsTemplateView,
-    # GenericReportsTemplateView,
+    # ReportsTemplateView,
     EventDetail,
     dashboard,
     event_export_form_entry,
@@ -20,12 +19,13 @@ from graphene_django.views import GraphQLView
 urlpatterns = [
     url(r'^$', EventTemplateView.as_view(), name='home'),
     url(r'^graphql', GraphQLView.as_view(graphiql=True)),
-    # url(r'^(?P<pk>\d+)/$', EventDetail.as_view(), name='event-detail'),
-    # url(r'^(?P<slug>[\w\-]+)/$', EventDetail.as_view(), name='event-detail'),
+    url(r'^control-panel/', include('controlpanel.urls', app_name='controlpanel', namespace='controlpanel')),
+    url(r'^anymail/', include('anymail.urls')),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^markdownx/', include('markdownx.urls')),
 
-    url(r'^(?P<pk>\d+)/reports/$', ReportsTemplateView.as_view(), name='reports'),
-    # url(r'^(?P<pk>\d+)/reports/generic/$', GenericReportsTemplateView.as_view(), name='generic_reports'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
+    url(r'^email/$', TemplateView.as_view(template_name='invitations/invitation.html'), name='email'),
     url(r'^thank-you/$', TemplateView.as_view(template_name='events/thank_you.html'), name='thank_you'),
 
     # Fobi View URLs

@@ -1,0 +1,21 @@
+{% extends "../control_panel_base.html" %}
+
+
+{% block control-panel-content %}
+
+<div class="row">
+  <!-- Start of Invitees who didn't responded -->
+  <div class="col-xl-6 col-lg-12">
+    <div class="card">
+      <div class="card-block">
+        <div class="table-responsive">
+          <form class="" action="" method="post">{% csrf_token %}
+            {{form.as_p}}
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Invitees who didn't responded -->
+
+{% endblock %}

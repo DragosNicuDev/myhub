@@ -70,7 +70,7 @@
             {% easy_map location.last.event_location_address using 'easy_maps/map.html' %}
           </div>
           {% else %}
-          <h1>Nope</h1>
+          <h1>There are no locations for this Event</h1>
           {% endif %}
         </div>
       </div>
@@ -101,14 +101,20 @@ $( document ).ready(function() { //wait until body loads
   var doi=$('#fobi-form input:radio[name={{field.html_name}}]');
     {% for data in field.field.conditioned_data %}
       var {{data}} = $('#fobi-form #{{data}}');
+      $("input").prop('required',false);
       doi.change(function(){
         var value=this.value;
         {{data}}.addClass('d-none');
+        $("input").prop('required',false);
 
       if (value == '{{field.field.conditional}}'){
         {{data}}.removeClass('d-none');
+        $("input").prop('required',true);
       }
       });
+      if ($('#fobi-form input:radio[name={{field.html_name}}]:checked').val() == '{{field.field.conditional}}'){
+        {{data}}.removeClass('d-none');
+      }
       // GATA COD
     {% endfor %}
   {% endif %}

@@ -56,7 +56,7 @@ class EventTemplateView(TemplateView):
 
 class ReportsTemplateView(DetailView):
     model = Event
-    template_name = 'events/reports.html'
+    template_name = 'control-panel/reports/reports.html'
 
     def get_context_data(self, **kwargs):
        context = super().get_context_data(**kwargs)
