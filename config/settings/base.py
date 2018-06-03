@@ -74,11 +74,6 @@ GRAPHENE = {
     'SCHEMA': 'myhub_events.schema.schema'
 }
 
-ANYMAIL = {
-    "MAILGUN_API_KEY": "key-7a4ff32900b675a2142cbc92b4052389",
-    'WEBHOOK_SECRET': 'ifPdm7oyP1JarDPO:jqU7mzrDt1qMEcdx',
-    "MAILGUN_SENDER_DOMAIN": "sandboxa5c61fc0e55646b4800d7532cc0a6449.mailgun.org",
-}
 
 FOBI_SPECIFFIC = [
     # `django-fobi` core
@@ -334,4 +329,3 @@ ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
-EASY_MAPS_GOOGLE_MAPS_API_KEY = 'AIzaSyByvIhe5x2uDsVamvHl5D0pd-eMAg0mACE'

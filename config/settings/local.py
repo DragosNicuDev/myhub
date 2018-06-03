@@ -70,6 +70,12 @@ FOBI_SPECIFFIC = [
     'eventsformdatabase',
 ]
 
+ANYMAIL = {
+    "MAILGUN_API_KEY": "key-7a4ff32900b675a2142cbc92b4052389",
+    'WEBHOOK_SECRET': 'ifPdm7oyP1JarDPO:jqU7mzrDt1qMEcdx',
+    "MAILGUN_SENDER_DOMAIN": "sandboxa5c61fc0e55646b4800d7532cc0a6449.mailgun.org",
+}
+EASY_MAPS_GOOGLE_MAPS_API_KEY = 'AIzaSyByvIhe5x2uDsVamvHl5D0pd-eMAg0mACE'
 FOBI_DEBUG = True
 
 # INSTALLED_APPS += FOBI_SPECIFFIC
@@ -170,7 +176,7 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
 
-EASY_MAPS_GOOGLE_MAPS_API_KEY = 'AIzaSyByvIhe5x2uDsVamvHl5D0pd-eMAg0mACE'
+# EASY_MAPS_GOOGLE_MAPS_API_KEY = 'AIzaSyByvIhe5x2uDsVamvHl5D0pd-eMAg0mACE'
 
 LANGUAGE_CODE = 'en' # default language
 LANGUAGES = (
