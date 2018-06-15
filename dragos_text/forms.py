@@ -20,6 +20,7 @@ class DragosTextInputForm(forms.Form, BaseFormFieldPluginForm):
 
     plugin_data_fields = [
         ("label", ""),
+        ("ro_label", ""),
         ("name", ""),
         ("help_text", ""),
         ("initial", ""),
@@ -33,6 +34,13 @@ class DragosTextInputForm(forms.Form, BaseFormFieldPluginForm):
 
     label = forms.CharField(
         label=_("Label"),
+        required=True,
+        widget=forms.widgets.TextInput(
+            attrs={'class': theme.form_element_html_class}
+        )
+    )
+    ro_label = forms.CharField(
+        label=_("Eticheta"),
         required=True,
         widget=forms.widgets.TextInput(
             attrs={'class': theme.form_element_html_class}

@@ -47,22 +47,31 @@ class DragosRadioInputPlugin(FormFieldPlugin):
                                  form_element_entries=None, **kwargs):
         """Get form field instances."""
         choices = get_select_field_choices(self.data.choices)
+        ro_choices = get_select_field_choices(self.data.ro_choices)
         conditioned_data = get_select_field_cond_data(self.data.conditioned_data)
         widget_attrs = {'class': theme.form_radio_element_html_class}
 
         field_kwargs = {
             'label': self.data.label,
+            'ro_label': self.data.ro_label,
             'help_text': self.data.help_text,
             'initial': self.data.initial,
-            # 'required': self.data.required,
-            'required': 'required',
+            'required': self.data.required,
+            # 'required': 'required',
             'conditional': self.data.conditional,
             'conditioned_data': conditioned_data,
             'is_conditioned': self.data.is_conditioned,
             'conditioned_by': self.data.conditioned_by,
             'choices': choices,
+            'ro_choices': ro_choices,
             'widget': RadioSelect(attrs=widget_attrs),
         }
+        # print(self.data.choices)
+        # print(len(self.data.choices))
+        print(choices)
+        print(len(choices))
+        print(ro_choices)
+        print(len(ro_choices))
 
         if request:
             post = request.POST.get('self.data.name')
@@ -89,12 +98,36 @@ class DragosRadioInputPlugin(FormFieldPlugin):
 
             # Get choices
             choices = dict(get_select_field_choices(self.data.choices))
+            ro_choices = dict(get_select_field_choices(self.data.ro_choices))
+            print(ro_choices)
+            print(choices)
             conditioned_data = dict(get_select_field_choices(self.data.conditioned_data))
 
             if value in choices:
                 # Handle the submitted form value
 
                 label = safe_text(choices.get(value))
+
+                # Should be returned as repr
+                if SUBMIT_VALUE_AS == SUBMIT_VALUE_AS_REPR:
+                    value = label
+                # Should be returned as mix
+                else:
+                    value = "{0} ({1})".format(label, value)
+
+                # Overwrite ``cleaned_data`` of the ``form`` with object
+                # qualifier.
+                form.cleaned_data[self.data.name] = value
+
+                # It's critically important to return the ``form`` with updated
+                # ``cleaned_data``
+                return form
+
+            if value in ro_choices:
+                print(value)
+                # Handle the submitted form value
+
+                label = safe_text(ro_choices.get(value))
 
                 # Should be returned as repr
                 if SUBMIT_VALUE_AS == SUBMIT_VALUE_AS_REPR:

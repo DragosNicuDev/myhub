@@ -19,8 +19,10 @@ class DragosCheckboxSelectMultipleInputForm(forms.Form, BaseFormFieldPluginForm)
 
     plugin_data_fields = [
         ("label", ""),
+        ("ro_label", ""),
         ("name", ""),
         ("choices", ""),
+        ("ro_choices", ""),
         ("help_text", ""),
         ("initial", ""),
         ("conditional", ""),
@@ -36,6 +38,13 @@ class DragosCheckboxSelectMultipleInputForm(forms.Form, BaseFormFieldPluginForm)
             attrs={'class': theme.form_element_html_class}
         )
     )
+    ro_label = forms.CharField(
+        label=_("Eticheta"),
+        required=False,
+        widget=forms.widgets.TextInput(
+            attrs={'class': theme.form_element_html_class}
+        )
+    )
     name = forms.CharField(
         label=_("Name"),
         required=True,
@@ -46,6 +55,37 @@ class DragosCheckboxSelectMultipleInputForm(forms.Form, BaseFormFieldPluginForm)
     choices = forms.CharField(
         label=_("Choices"),
         required=True,
+        help_text=_("Enter single values/pairs per line. Example:<code><br/>"
+                    "&nbsp;&nbsp;&nbsp;&nbsp;1<br/>"
+                    "&nbsp;&nbsp;&nbsp;&nbsp;2<br/>"
+                    "&nbsp;&nbsp;&nbsp;&nbsp;alpha, Alpha<br/>"
+                    "&nbsp;&nbsp;&nbsp;&nbsp;beta, Beta<br/>"
+                    "&nbsp;&nbsp;&nbsp;&nbsp;omega"
+                    "</code><br/>"
+                    "It finally transforms into the following HTML "
+                    "code:<code><br/>"
+                    '&nbsp;&nbsp;&nbsp;&nbsp;'
+                    '&lt;select id="id_NAME_OF_THE_ELEMENT" '
+                    'name="NAME_OF_THE_ELEMENT"&gt;<br/>'
+                    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                    '&lt;option value="1"&gt;1&lt;/option&gt;<br/>'
+                    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                    '&lt;option value="2"&gt;2&lt;/option&gt;<br/>'
+                    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                    '&lt;option value="alpha"&gt;Alpha&lt;/option&gt;<br/>'
+                    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                    '&lt;option value="beta"&gt;Beta&lt;/option&gt;<br/>'
+                    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                    '&lt;option value="omega"&gt;omega&lt;/option&gt;<br/>'
+                    '&nbsp;&nbsp;&nbsp;&nbsp;&lt;/select&gt;'
+                    "</code>"),
+        widget=forms.widgets.Textarea(
+            attrs={'class': theme.form_element_html_class}
+        )
+    )
+    ro_choices = forms.CharField(
+        label=_("Optiuni"),
+        required=False,
         help_text=_("Enter single values/pairs per line. Example:<code><br/>"
                     "&nbsp;&nbsp;&nbsp;&nbsp;1<br/>"
                     "&nbsp;&nbsp;&nbsp;&nbsp;2<br/>"

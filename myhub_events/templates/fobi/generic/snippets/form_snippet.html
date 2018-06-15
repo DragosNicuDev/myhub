@@ -1,4 +1,5 @@
 {% load i18n fobi_tags %}
+{% get_available_languages as languages %}
 
 {% block form_required_fields_message_block %}
 <div class="{% block form_required_fields_message_wrapper_class %}{% endblock %}">
@@ -25,15 +26,35 @@
         {% block form_element_wrapper_error_html_class %}{% endblock %}
       {% endif %}{% if field.field.is_conditioned %} d-none{% endif %}
     {% endspaceless %}" id="{{ field.html_name }}">
-      {% if field.label %}
-        <label class="col-sm col-md-3" for="{{ field.id_for_label }}" style="font-weight: 600">
-          {{ field.label }}{% if field.field.required %}<span class="{% block form_element_required_field_sign_html_class %}required-field{% endblock %}">*</span>{% endif %}
-        </label>
-      {% endif %}
+
+      {# {% for language in languages %} #}
+        {% ifequal LANGUAGE_CODE 'ro' %}
+          {% if field.field.ro_label %}
+            <label class="col-sm col-md-3" for="{{ field.id_for_label }}" style="font-weight: 600">
+              {{ field.field.ro_label }}
+            </label>
+          {% endif %}
+        {% endifequal %}
+        {% ifequal LANGUAGE_CODE 'en' %}
+          {% if field.label %}
+            <label class="col-sm col-md-3" for="{{ field.id_for_label }}" style="font-weight: 600">
+              {{ field.label }}{% if field.field.required %}<span class="{% block form_element_required_field_sign_html_class %}required-field{% endblock %}">*</span>{% endif %}
+            </label>
+          {% endif %}
+        {% endifequal %}
+      {# {% endfor %} #}
+
+      {# {% if field.label %} #}
+        {# <label class="col-sm col-md-3" for="{{ field.id_for_label }}" style="font-weight: 600"> #}
+          {# {{ field.label }}{% if field.field.required %}<span class="{% block form_element_required_field_sign_html_class %}required-field{% endblock %}">*</span>{% endif %} #}
+        {# </label> #}
+      {# {% endif %} #}
 
       <div class="{% block form_element_field_wrapper_html_class %}{% endblock %} col-sm col-md-6">
         {% get_form_field_type field as form_field_type %}
         {% if form_field_type.is_radio %}
+        {% ifequal LANGUAGE_CODE 'en' %}
+
           {% for choice_value, choice_label in field.field.choices %}
             <div class="radio">
               <label for="{{ field.html_name }}_{{ forloop.counter0 }}">
@@ -42,6 +63,19 @@
               </label>
             </div>
           {% endfor %}
+
+        {% endifequal %}
+        {% ifequal LANGUAGE_CODE 'ro' %}
+          {% for choice_value, choice_label in field.field.ro_choices %}
+            <div class="radio">
+              <label for="{{ field.html_name }}_{{ forloop.counter0 }}">
+                <input type="radio" id="{{ field.html_name }}_{{ forloop.counter0 }}" name="{{ field.html_name }}" value="{{ choice_value }}"{% if field.value == choice_value %}checked{% endif %} {% if field.field.required %}required='required'{% endif %}>
+                {{ choice_label }}
+              </label>
+            </div>
+          {% endfor %}
+
+        {% endifequal %}
         {% elif form_field_type.is_checkbox_multiple %}
           {% for choice_value, choice_label in field.field.choices %}
             <div class="checkbox">

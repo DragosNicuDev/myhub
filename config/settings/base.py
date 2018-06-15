@@ -98,6 +98,7 @@ FOBI_SPECIFFIC = [
     'dragos_text',
     'dragos_range_select',
     'dragos_content_text',
+    'dragos_textarea',
 ]
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS + FOBI_SPECIFFIC

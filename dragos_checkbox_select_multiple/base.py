@@ -33,10 +33,12 @@ class DragosCheckboxSelectMultipleInputPlugin(FormFieldPlugin):
                                  form_element_entries=None, **kwargs):
         """Get form field instances."""
         choices = self.get_choices()
+        ro_choices = get_select_field_choices(self.data.ro_choices)
         conditioned_data = get_select_field_cond_data(self.data.conditioned_data)
 
         field_kwargs = {
             'label': self.data.label,
+            'ro_label': self.data.ro_label,
             'help_text': self.data.help_text,
             'initial': self.data.initial,
             'required': self.data.required,
@@ -44,6 +46,7 @@ class DragosCheckboxSelectMultipleInputPlugin(FormFieldPlugin):
             'conditioned_data': conditioned_data,
             'is_conditioned': self.data.is_conditioned,
             'choices': choices,
+            'ro_choices': ro_choices,
             'widget': CheckboxSelectMultiple(
                 attrs={'class': theme.form_element_html_class}
             ),

@@ -46,6 +46,7 @@ class DragosRangeSelectInputPlugin(FormFieldPlugin):
 
         field_kwargs = {
             'label': self.data.label,
+            'ro_label': self.data.ro_label,
             'help_text': self.data.help_text,
             'initial': initial,
             'required': self.data.required,

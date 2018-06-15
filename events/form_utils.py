@@ -44,13 +44,15 @@ class DragosNoneField(Field):
 class DragosChoiceField(ChoiceField):
     def __init__(self, conditional=None, conditioned_data=None,
                 is_conditioned=None, conditioned_by=None, required=True, choices=None,
-                 widget=None, label=None, initial=None, help_text='',
-                 *args, **kwargs):
+                 ro_choices=None, widget=None, label=None, ro_label=None,
+                 initial=None, help_text='', *args, **kwargs):
         super(DragosChoiceField, self).__init__(
             required=required, widget=widget, label=label, initial=initial,
             help_text=help_text, choices=choices, *args, **kwargs
         )
+        self.ro_label = ro_label
         self.choices = choices
+        self.ro_choices = ro_choices
         self.conditional = conditional
         self.is_conditioned = is_conditioned
         self.conditioned_data = conditioned_data
@@ -59,14 +61,16 @@ class DragosChoiceField(ChoiceField):
 
 class DragosMultipleChoiceField(MultipleChoiceField):
     def __init__(self, conditional=None, conditioned_data=None,
-                is_conditioned=None, required=True, choices=None,
-                 widget=None, label=None, initial=None, help_text='',
+                is_conditioned=None, required=True, choices=None, ro_choices=None,
+                 widget=None, label=None, ro_label=None, initial=None, help_text='',
                  *args, **kwargs):
         super(DragosMultipleChoiceField, self).__init__(
             required=required, widget=widget, label=label, initial=initial,
             help_text=help_text, choices=choices, *args, **kwargs
         )
+        self.ro_label = ro_label
         self.choices = choices
+        self.ro_choices = ro_choices
         self.conditional = conditional
         self.is_conditioned = is_conditioned
         self.conditioned_data = conditioned_data
@@ -75,7 +79,8 @@ class DragosMultipleChoiceField(MultipleChoiceField):
 class DragosCharField(CharField):
     def __init__(self, max_length=None, min_length=None, strip=True,
                  empty_value='', conditional=None, conditioned_data=None,
-                 is_conditioned=None, *args, **kwargs):
+                 is_conditioned=None, ro_label=None,
+                 *args, **kwargs):
         self.max_length = max_length
         self.min_length = min_length
         self.strip = strip
@@ -83,6 +88,8 @@ class DragosCharField(CharField):
         self.conditional = conditional
         self.is_conditioned = is_conditioned
         self.conditioned_data = conditioned_data
+        # self.en_label = en_label
+        self.ro_label = ro_label
 
         super(DragosCharField, self).__init__(*args, **kwargs)
         if min_length is not None:
