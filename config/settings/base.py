@@ -56,7 +56,6 @@ THIRD_PARTY_APPS = [
     'imagekit',
     'psqlextra',
     'localized_fields.apps.LocalizedFieldsConfig',
-    'graphene_django',
     'anymail',
 ]
 
@@ -69,11 +68,6 @@ LOCAL_APPS = [
     'invitations',
 
 ]
-
-GRAPHENE = {
-    'SCHEMA': 'myhub_events.schema.schema'
-}
-
 
 FOBI_SPECIFFIC = [
     # `django-fobi` core

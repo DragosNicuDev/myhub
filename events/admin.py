@@ -5,7 +5,7 @@ from django_summernote.admin import SummernoteModelAdmin
 
 from localized_fields.admin import LocalizedFieldsAdminMixin
 from localized_fields.util import get_language_codes
-from ckeditor.widgets import CKEditorWidget
+# from ckeditor.widgets import CKEditorWidget
 
 from .models import (
     Event,
@@ -17,19 +17,19 @@ from .models import (
     EventFormEntry)
 
 
-class PostAdminForm(forms.ModelForm):
-    event_description = forms.CharField(widget=CKEditorWidget())
-    class Meta:
-        model = EventDescription
-        fields = ('event_description', )
-        # fields = '__all__'
-
-class PostAdmin(admin.ModelAdmin):
-    event_description = forms.CharField(widget=CKEditorWidget())
-    form = PostAdminForm
-    exclude = ('event', )
-
-admin.site.register(EventDescription, PostAdmin)
+# class PostAdminForm(forms.ModelForm):
+#     event_description = forms.CharField(widget=CKEditorWidget())
+#     class Meta:
+#         model = EventDescription
+#         fields = ('event_description', )
+#         # fields = '__all__'
+#
+# class PostAdmin(admin.ModelAdmin):
+#     event_description = forms.CharField(widget=CKEditorWidget())
+#     form = PostAdminForm
+#     exclude = ('event', )
+#
+# admin.site.register(EventDescription, PostAdmin)
 
 
 # Apply summernote to all TextField in model.

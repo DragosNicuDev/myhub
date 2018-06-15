@@ -14,14 +14,10 @@ from events.views import (
     event_export_form_entry,
     event_import_form_entry)
 
-from graphene_django.views import GraphQLView
-
 urlpatterns = [
     url(r'^$', EventTemplateView.as_view(), name='home'),
-    url(r'^graphql', GraphQLView.as_view(graphiql=True)),
     url(r'^control-panel/', include('controlpanel.urls', app_name='controlpanel', namespace='controlpanel')),
     url(r'^anymail/', include('anymail.urls')),
-    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^markdownx/', include('markdownx.urls')),
 
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
