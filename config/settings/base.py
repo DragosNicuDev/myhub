@@ -52,7 +52,7 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount',  # registration
     'autoslug',
     'easy_maps',
-    'django_summernote',
+    # 'django_summernote',
     'imagekit',
     'psqlextra',
     'localized_fields.apps.LocalizedFieldsConfig',
