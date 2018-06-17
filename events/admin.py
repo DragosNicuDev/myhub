@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
-from django_summernote.admin import SummernoteModelAdmin
+# from django_summernote.admin import SummernoteModelAdmin
 
 from localized_fields.admin import LocalizedFieldsAdminMixin
 from localized_fields.util import get_language_codes
@@ -34,11 +34,11 @@ from .models import (
 
 # Apply summernote to all TextField in model.
 # class SomeModelAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
-class SomeModelAdmin(LocalizedFieldsAdminMixin, SummernoteModelAdmin):  # instead of ModelAdmin
+# class SomeModelAdmin(LocalizedFieldsAdminMixin, SummernoteModelAdmin):  # instead of ModelAdmin
     # summer_note_fields = '__all__'
     # summer_note_fields = 'event_description'
     # summer_note_fields = 'event_trans'
-    pass
+    # pass
 
 
 class EventTime(admin.TabularInline):
