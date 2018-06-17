@@ -18,7 +18,6 @@ urlpatterns = [
     url(r'^$', EventTemplateView.as_view(), name='home'),
     url(r'^control-panel/', include('controlpanel.urls', app_name='controlpanel', namespace='controlpanel')),
     url(r'^anymail/', include('anymail.urls')),
-    url(r'^markdownx/', include('markdownx.urls')),
 
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
     url(r'^email/$', TemplateView.as_view(template_name='invitations/invitation.html'), name='email'),
@@ -30,7 +29,7 @@ urlpatterns = [
     # Fobi Edit URLs
     url(r'^fobi/', include('fobi.urls.edit')),
 
-    url(r'^summernote/', include('django_summernote.urls')),
+    # url(r'^summernote/', include('django_summernote.urls')),
 
     # Fobi DB Store plugin URLs
     url(r'^fobi/plugins/form-handlers/db-store/',
