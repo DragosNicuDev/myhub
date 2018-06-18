@@ -20,7 +20,7 @@ def get_invitation_context():
     return {
         'title': "Lion's Head",
         'main_image': '2018-05-01.jpg',
-        'logo': 'logo.gif',
+        # 'logo': 'logo.gif',
         'main_color': '#fff3e8',
         'font_color': '#666666',
         'page_title': "Cory and Rowena - You're Invited!",
@@ -78,9 +78,9 @@ class EventInvitationCreate(generic.CreateView):
             os.path.join(os.path.dirname(__file__), 'static', 'photos', '2018-05-01.jpg')
         )
 
-        logo = attach_inline_image_file(
-            message,
-            os.path.join(os.path.dirname(__file__), 'static', 'photos', 'logo.gif'))
+        # logo = attach_inline_image_file(
+        #     message,
+        #     os.path.join(os.path.dirname(__file__), 'static', 'photos', 'logo.gif'))
         context = get_invitation_context()
         context['main_image'] = cid
         # context['logo'] = logo
