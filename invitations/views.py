@@ -3,6 +3,7 @@ import os
 
 import simplejson as json
 
+from django.conf import settings
 from django.core.mail import EmailMultiAlternatives, send_mail
 from django.shortcuts import render
 from django.views import generic
@@ -10,7 +11,7 @@ from django.template.loader import render_to_string
 from django.urls import reverse
 
 from anymail.message import AnymailMessage
-from anymail.message import attach_inline_image_file, attach_inline_image
+from anymail.message import attach_inline_image_file
 
 from .models import EventInvitation
 from .forms import EventInvitationForm
@@ -73,10 +74,16 @@ class EventInvitationCreate(generic.CreateView):
             'event': str(event),  # Anymail maps globals to all recipients
         }
 
+        # image = open(os.path.join(os.path.dirname(__file__), 'static', 'photos', '2018-05-01.jpg'), 'rb')
+        # image = "https://myhub.events/static/photos/2018-05-01.jpg"
         # cid = attach_inline_image_file(
-        #     message,
-        #     os.path.join(os.path.dirname(__file__), 'static', 'photos', '2018-05-01.jpg')
+            # message,
+            # os.path.join(settings.ROOT_DIR, "/invitations/static/photos/2018-05-01.jpg"),
+            # image,
+            # os.path.join(settings.MAILS_DIR, "invitations/static/photos/2018-05-01.jpg"),
+            # domain='https://myhub.events'
         # )
+        # print(cid)
 
         # logo = attach_inline_image_file(
         #     message,
