@@ -73,10 +73,10 @@ class EventInvitationCreate(generic.CreateView):
             'event': str(event),  # Anymail maps globals to all recipients
         }
 
-        cid = attach_inline_image_file(
-            message,
-            os.path.join(os.path.dirname(__file__), 'static', 'photos', '2018-05-01.jpg')
-        )
+        # cid = attach_inline_image_file(
+        #     message,
+        #     os.path.join(os.path.dirname(__file__), 'static', 'photos', '2018-05-01.jpg')
+        # )
 
         # logo = attach_inline_image_file(
         #     message,
