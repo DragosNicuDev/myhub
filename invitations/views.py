@@ -82,7 +82,7 @@ class EventInvitationCreate(generic.CreateView):
         #     message,
         #     os.path.join(os.path.dirname(__file__), 'static', 'photos', 'logo.gif'))
         context = get_invitation_context()
-        context['main_image'] = cid
+        # context['main_image'] = cid
         # context['logo'] = logo
         context['body'] = body
         template_html = render_to_string('invitations/invitation.html', context=context)
