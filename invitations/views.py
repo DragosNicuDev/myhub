@@ -95,7 +95,7 @@ class EventInvitationCreate(generic.CreateView):
         template_html = render_to_string('invitations/invitation.html', context=context)
         message.attach_alternative(template_html, "text/html")
         message.mixed_subtype = 'related'
-        print(message.as_string())
+        # print(message.as_string())
         # print(dir(message.send()))
         message.send()
         return super().form_valid(form)
