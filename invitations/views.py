@@ -76,20 +76,20 @@ class EventInvitationCreate(generic.CreateView):
 
         # image = open(os.path.join(os.path.dirname(__file__), 'static', 'photos', '2018-05-01.jpg'), 'rb')
         # image = "https://myhub.events/static/photos/2018-05-01.jpg"
-        cid = attach_inline_image_file(
-            message,
+        # cid = attach_inline_image_file(
+            # message,
             # os.path.join(settings.ROOT_DIR, "/invitations/static/photos/2018-05-01.jpg"),
             # image,
-            os.path.join(settings.MAILS_DIR, "invitations/static/photos/2018-05-01.jpg"),
+            # os.path.join(settings.MAILS_DIR, "invitations/static/photos/2018-05-01.jpg"),
             # domain='https://myhub.events'
-        )
+        # )
         # print(cid)
 
         # logo = attach_inline_image_file(
         #     message,
         #     os.path.join(os.path.dirname(__file__), 'static', 'photos', 'logo.gif'))
         context = get_invitation_context()
-        context['main_image'] = cid
+        # context['main_image'] = cid
         # context['logo'] = logo
         context['body'] = body
         template_html = render_to_string('invitations/invitation.html', context=context)
