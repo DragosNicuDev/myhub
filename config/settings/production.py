@@ -96,7 +96,7 @@ INSTALLED_APPS += ['gunicorn', ]
 # EMAIL
 # ------------------------------------------------------------------------------
 DEFAULT_FROM_EMAIL = env('DJANGO_DEFAULT_FROM_EMAIL',
-                         default='MyHub Events <noreply@myhub.events>')
+                         default='MyHub Events <invitation@myhub.events>')
 EMAIL_SUBJECT_PREFIX = env('DJANGO_EMAIL_SUBJECT_PREFIX', default='[MyHub Events]')
 SERVER_EMAIL = env('DJANGO_SERVER_EMAIL', default=DEFAULT_FROM_EMAIL)
 

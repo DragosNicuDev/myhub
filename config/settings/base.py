@@ -8,9 +8,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
 import environ
+import os
 
 ROOT_DIR = environ.Path(__file__) - 3  # (myhub_events/config/settings/base.py - 3 = myhub_events/)
 APPS_DIR = ROOT_DIR.path('myhub_events')
+# MAILS_DIR = environ.Path(__file__) - 4
+# MAIL_DIR
+MAILS_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Load operating system environment variables and then prepare to use them
 env = environ.Env()

@@ -55,7 +55,7 @@ class EventInvitationCreate(generic.CreateView):
             data.setdefault(invitee.get('email'), {})\
                 .setdefault('last_name', invitee.get('last_name'))
             data.setdefault(invitee.get('email'), {})\
-                .setdefault('token', 'http://localhost:8000/' + str(event.pk) + '/' + invitee.get('token'))
+                .setdefault('token', 'https://myhub.events/' + str(event.pk) + '/' + invitee.get('token'))
 
         recipients = []
 
@@ -76,25 +76,27 @@ class EventInvitationCreate(generic.CreateView):
 
         # image = open(os.path.join(os.path.dirname(__file__), 'static', 'photos', '2018-05-01.jpg'), 'rb')
         # image = "https://myhub.events/static/photos/2018-05-01.jpg"
-        # cid = attach_inline_image_file(
-            # message,
+        cid = attach_inline_image_file(
+            message,
             # os.path.join(settings.ROOT_DIR, "/invitations/static/photos/2018-05-01.jpg"),
             # image,
-            # os.path.join(settings.MAILS_DIR, "invitations/static/photos/2018-05-01.jpg"),
+            os.path.join(settings.MAILS_DIR, "invitations/static/photos/2018-05-01.jpg"),
             # domain='https://myhub.events'
-        # )
+        )
         # print(cid)
 
         # logo = attach_inline_image_file(
         #     message,
         #     os.path.join(os.path.dirname(__file__), 'static', 'photos', 'logo.gif'))
         context = get_invitation_context()
-        # context['main_image'] = cid
+        context['main_image'] = cid
         # context['logo'] = logo
         context['body'] = body
         template_html = render_to_string('invitations/invitation.html', context=context)
         message.attach_alternative(template_html, "text/html")
         message.mixed_subtype = 'related'
+        print(message.as_string())
+        # print(dir(message.send()))
         message.send()
         return super().form_valid(form)
 
