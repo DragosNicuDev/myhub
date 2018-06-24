@@ -7,7 +7,13 @@ from events.models import Event, EventInvitee
 class EventInvitation(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
-    subject = models.CharField(
+    subject_en = models.CharField(
+        max_length=256,
+        null=True,
+        blank=True
+    )
+
+    subject_ro = models.CharField(
         max_length=256,
         null=True,
         blank=True

@@ -39,11 +39,13 @@ class EventInvitationCreate(generic.CreateView):
     def form_valid(self, form):
         body = form.cleaned_data.get('body')
         event = form.cleaned_data.get('event')
-        subject = form.cleaned_data.get('subject')
+        subject_ro = form.cleaned_data.get('subject_ro')
+        subject_en = form.cleaned_data.get('subject_en')
         emails = event.eventinvitee_set.values(
             'email',
             'first_name',
             'last_name',
+            'language',
             'token',
             )
 
@@ -55,49 +57,57 @@ class EventInvitationCreate(generic.CreateView):
             data.setdefault(invitee.get('email'), {})\
                 .setdefault('last_name', invitee.get('last_name'))
             data.setdefault(invitee.get('email'), {})\
-                .setdefault('token', 'https://myhub.events/' + str(event.pk) + '/' + invitee.get('token'))
+                .setdefault('token', 'https://myhub.events/' + invitee.get('language') + '/' + str(event.pk) + '/' + invitee.get('token'))
 
-        recipients = []
+
+        print(data)
+
+        recipients_en = []
+        recipients_ro = []
 
         for email in emails:
-            recipients.append(email.get('email'))
+            if email.get('language') == 'ro':
+                recipients_ro.append(email.get('email'))
+            if email.get('language') == 'en':
+                recipients_en.append(email.get('email'))
 
-        message = AnymailMessage(
-            subject=subject,
+        message_ro = AnymailMessage(
+            subject=subject_ro,
             body=body,
-            to=recipients
+            to=recipients_ro
         )
 
-        message.merge_data = data
-        message.merge_global_data = {
-            'ship_date': "May 15",  # Anymail maps globals to all recipients
+        message_ro.merge_data = data
+        message_ro.merge_global_data = {
             'event': str(event),  # Anymail maps globals to all recipients
         }
 
-        # image = open(os.path.join(os.path.dirname(__file__), 'static', 'photos', '2018-05-01.jpg'), 'rb')
-        # image = "https://myhub.events/static/photos/2018-05-01.jpg"
-        # cid = attach_inline_image_file(
-            # message,
-            # os.path.join(settings.ROOT_DIR, "/invitations/static/photos/2018-05-01.jpg"),
-            # image,
-            # os.path.join(settings.MAILS_DIR, "invitations/static/photos/2018-05-01.jpg"),
-            # domain='https://myhub.events'
-        # )
-        # print(cid)
-
-        # logo = attach_inline_image_file(
-        #     message,
-        #     os.path.join(os.path.dirname(__file__), 'static', 'photos', 'logo.gif'))
         context = get_invitation_context()
-        # context['main_image'] = cid
-        # context['logo'] = logo
+
         context['body'] = body
-        template_html = render_to_string('invitations/invitation.html', context=context)
-        message.attach_alternative(template_html, "text/html")
-        message.mixed_subtype = 'related'
-        # print(message.as_string())
-        # print(dir(message.send()))
-        message.send()
+        template_html = render_to_string('invitations/invitation_ro.html', context=context)
+        message_ro.attach_alternative(template_html, "text/html")
+        message_ro.mixed_subtype = 'related'
+        message_ro.send()
+
+        message_en = AnymailMessage(
+            subject=subject_en,
+            body=body,
+            to=recipients_en
+        )
+
+        message_en.merge_data = data
+        message_en.merge_global_data = {
+            'event': str(event),  # Anymail maps globals to all recipients
+        }
+
+        context = get_invitation_context()
+
+        context['body'] = body
+        template_html = render_to_string('invitations/invitation_en.html', context=context)
+        message_en.attach_alternative(template_html, "text/html")
+        message_en.mixed_subtype = 'related'
+        message_en.send()
         return super().form_valid(form)
 
 

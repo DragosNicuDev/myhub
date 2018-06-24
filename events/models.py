@@ -126,6 +126,20 @@ class EventLocation(models.Model):
 class EventInvitee(models.Model):
     '''Organiser can add invitees'''
 
+    ENGLISH = 'en'
+    ROMANIAN = 'ro'
+
+    LANGUAGE_INVITATION = (
+        (ENGLISH, 'English'),
+        (ROMANIAN, 'Română')
+    )
+
+    language = models.CharField(
+        max_length=2,
+        choices=LANGUAGE_INVITATION,
+        default=ROMANIAN
+    )
+
     event = models.ForeignKey(
         Event,
         on_delete=models.CASCADE

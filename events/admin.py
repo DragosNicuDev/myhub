@@ -75,6 +75,7 @@ class EventAdmin(LocalizedFieldsAdminMixin, admin.ModelAdmin):
 class EventInviteeAdmin(admin.ModelAdmin):
     fields = (
         'event',
+        'language',
         'first_name',
         'last_name',
         'email',
