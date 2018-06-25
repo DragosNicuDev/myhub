@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from email.mime.image import MIMEImage
 import os
 
@@ -60,7 +62,7 @@ class EventInvitationCreate(generic.CreateView):
                 .setdefault('token', 'https://myhub.events/' + invitee.get('language') + '/' + str(event.pk) + '/' + invitee.get('token'))
 
 
-        print(data)
+        # print(data)
 
         recipients_en = []
         recipients_ro = []
