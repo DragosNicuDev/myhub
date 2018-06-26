@@ -285,7 +285,7 @@ msgstr ""
 
 #: events/views.py:306
 msgid "There was an error. Please check the form."
-msgstr ""
+msgstr "A apărut o eroare. Verificați chestionarul."
 
 #: events/views.py:379
 msgid "Form entry not found."

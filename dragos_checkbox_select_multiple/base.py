@@ -52,6 +52,12 @@ class DragosCheckboxSelectMultipleInputPlugin(FormFieldPlugin):
             ),
         }
 
+        if request:
+            post = request.POST.get('self.data.name')
+            if self.data.conditional != post:
+                self.data.required = False
+                field_kwargs['required'] = self.data.required
+
         return [(self.data.name, DragosMultipleChoiceField, field_kwargs)]
         # return [(self.data.name, MultipleChoiceField, field_kwargs)]
 
