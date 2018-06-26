@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-11 14:06+0000\n"
+"POT-Creation-Date: 2018-06-26 16:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,19 +19,230 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
 "2:1));\n"
 
-#: events/models.py:21
+#: dragos_checkbox_select_multiple/base.py:28
+msgid "Dragos Checkbox select multiple"
+msgstr ""
+
+#: dragos_checkbox_select_multiple/base.py:29 dragos_radio/base.py:43
+#: dragos_range_select/base.py:37 dragos_text/base.py:28
+#: dragos_textarea/base.py:27
+msgid "Fields"
+msgstr ""
+
+#: dragos_checkbox_select_multiple/forms.py:35 dragos_radio/forms.py:35
+#: dragos_range_select/forms.py:44 dragos_text/forms.py:36
+#: dragos_textarea/forms.py:31 dragos_textarea/forms.py:38
+msgid "Label"
+msgstr ""
+
+#: dragos_checkbox_select_multiple/forms.py:42 dragos_radio/forms.py:42
+#: dragos_range_select/forms.py:51 dragos_text/forms.py:43
+msgid "Eticheta"
+msgstr ""
+
+#: dragos_checkbox_select_multiple/forms.py:49 dragos_radio/forms.py:49
+#: dragos_range_select/forms.py:58 dragos_text/forms.py:50
+#: dragos_textarea/forms.py:45
+msgid "Name"
+msgstr ""
+
+#: dragos_checkbox_select_multiple/forms.py:56 dragos_radio/forms.py:56
+msgid "Choices"
+msgstr ""
+
+#: dragos_checkbox_select_multiple/forms.py:58
+#: dragos_checkbox_select_multiple/forms.py:89 dragos_radio/forms.py:58
+#: dragos_radio/forms.py:89
+msgid ""
+"Enter single values/pairs per line. Example:<code><br/>&nbsp;&nbsp;&nbsp;"
+"&nbsp;1<br/>&nbsp;&nbsp;&nbsp;&nbsp;2<br/>&nbsp;&nbsp;&nbsp;&nbsp;alpha, "
+"Alpha<br/>&nbsp;&nbsp;&nbsp;&nbsp;beta, Beta<br/>&nbsp;&nbsp;&nbsp;&nbsp;"
+"omega</code><br/>It finally transforms into the following HTML code:"
+"<code><br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;select id=\"id_NAME_OF_THE_ELEMENT\" "
+"name=\"NAME_OF_THE_ELEMENT\"&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+"&nbsp;&nbsp;&lt;option value=\"1\"&gt;1&lt;/option&gt;<br/>&nbsp;&nbsp;&nbsp;"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=\"2\"&gt;2&lt;/option&gt;<br/"
+">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=\"alpha"
+"\"&gt;Alpha&lt;/option&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+"&nbsp;&lt;option value=\"beta\"&gt;Beta&lt;/option&gt;<br/>&nbsp;&nbsp;&nbsp;"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=\"omega\"&gt;omega&lt;/"
+"option&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/select&gt;</code>"
+msgstr ""
+
+#: dragos_checkbox_select_multiple/forms.py:87 dragos_radio/forms.py:87
+msgid "Optiuni"
+msgstr ""
+
+#: dragos_checkbox_select_multiple/forms.py:118 dragos_radio/forms.py:118
+#: dragos_range_select/forms.py:89 dragos_text/forms.py:57
+#: dragos_textarea/forms.py:52
+msgid "Help text"
+msgstr ""
+
+#: dragos_checkbox_select_multiple/forms.py:125 dragos_radio/forms.py:125
+#: dragos_range_select/forms.py:96 dragos_text/forms.py:64
+#: dragos_textarea/forms.py:59
+msgid "Initial"
+msgstr ""
+
+#: dragos_checkbox_select_multiple/forms.py:132 dragos_content_text/forms.py:42
+#: dragos_radio/forms.py:132 dragos_range_select/forms.py:104
+#: dragos_text/forms.py:79
+msgid "Conditional"
+msgstr ""
+
+#: dragos_checkbox_select_multiple/forms.py:140 dragos_content_text/forms.py:50
+#: dragos_radio/forms.py:148 dragos_range_select/forms.py:112
+#: dragos_text/forms.py:87
+msgid "Conditioned Element"
+msgstr ""
+
+#: dragos_checkbox_select_multiple/forms.py:147 dragos_content_text/forms.py:57
+#: dragos_radio/forms.py:155 dragos_range_select/forms.py:119
+#: dragos_text/forms.py:94
+msgid "Is Conditioned"
+msgstr ""
+
+#: dragos_checkbox_select_multiple/forms.py:155 dragos_radio/forms.py:163
+#: dragos_range_select/forms.py:127 dragos_text/forms.py:102
+#: dragos_textarea/forms.py:66
+msgid "Required"
+msgstr ""
+
+#: dragos_content_text/base.py:30
+msgid "Dragos Content text"
+msgstr ""
+
+#: dragos_content_text/base.py:31
+msgid "Content"
+msgstr ""
+
+#: dragos_content_text/forms.py:37
+msgid "Text"
+msgstr ""
+
+#: dragos_radio/base.py:42
+msgid "Dragos Radio"
+msgstr ""
+
+#: dragos_radio/forms.py:140
+msgid "Conditioned by"
+msgstr ""
+
+#: dragos_range_select/base.py:36
+msgid "Dragos Range select"
+msgstr ""
+
+#: dragos_range_select/forms.py:65
+msgid "Min value"
+msgstr ""
+
+#: dragos_range_select/forms.py:73
+msgid "Max value"
+msgstr ""
+
+#: dragos_range_select/forms.py:81
+msgid "Step"
+msgstr ""
+
+#: dragos_range_select/forms.py:83
+msgid "Step size"
+msgstr ""
+
+#: dragos_range_select/forms.py:146
+msgid "`max_value` should be > than `min_value`."
+msgstr ""
+
+#: dragos_range_select/forms.py:152
+msgid "`step` should be > than `max_value` - `min_value`."
+msgstr ""
+
+#: dragos_range_select/forms.py:158
+msgid "`max_value` should be >= than `initial`."
+msgstr ""
+
+#: dragos_range_select/forms.py:164
+msgid "`initial` should be >= than `min_value`."
+msgstr ""
+
+#: dragos_text/base.py:27
+msgid "Dragos Text"
+msgstr ""
+
+#: dragos_text/forms.py:71 dragos_textarea/forms.py:73
+msgid "Max length"
+msgstr ""
+
+#: dragos_text/forms.py:109 dragos_textarea/forms.py:80
+msgid "Placeholder"
+msgstr ""
+
+#: dragos_text/forms.py:127
+#, python-brace-format
+msgid "Ensure this value has at most {0} characters (it has {1})."
+msgstr ""
+
+#: dragos_textarea/base.py:26
+msgid "Dragos Textarea"
+msgstr ""
+
+#: events/admin.py:107 eventsformdatabase/models.py:101
+#: eventsformdatabase/models.py:125
+#: eventsformdatabase/templates/db_store/view_saved_form_data_entries.html:39
+#: eventsformdatabase/templates/db_store/view_saved_form_wizard_data_entries.html:39
+#: myhub_events/templates/fobi/generic/dashboard.html:34
+#: myhub_events/templates/fobi/generic/forms_list.html:6
+msgid "Form"
+msgstr ""
+
+#: events/admin.py:119
+msgid "Custom"
+msgstr ""
+
+#: events/admin.py:127 eventsformdatabase/models.py:40
+msgid "User"
+msgstr ""
+
+#: events/admin.py:131
+msgid "Additional"
+msgstr ""
+
+#: events/form_utils.py:275
+msgid "Some essential plugin data missing in the JSON import."
+msgstr ""
+
+#: events/form_utils.py:290
+#, python-brace-format
+msgid "Plugin {0} is missing in the system."
+msgstr ""
+
+#: events/form_utils.py:297
+msgid "Some essential data missing in the JSON import."
+msgstr ""
+
+#: events/forms.py:54
+#, python-brace-format
+msgid "The {0} form requires a request argument."
+msgstr ""
+
+#: events/forms.py:150
+#, python-brace-format
+msgid "Invalid action URL {0}."
+msgstr ""
+
+#: events/models.py:23
 msgid "Event Title"
 msgstr "Titlul evenimentului"
 
-#: events/models.py:39
+#: events/models.py:40
 msgid "Main image"
 msgstr "Imaginea principală"
 
-#: events/models.py:63
+#: events/models.py:64
 msgid "Start Date and Time"
 msgstr "Începe (dată și oră)"
 
-#: events/models.py:69
+#: events/models.py:70
 msgid "End Date and Time"
 msgstr "Se termină (dată și oră)"
 
@@ -54,6 +265,127 @@ msgstr "Data și ora locației"
 #: events/models.py:118
 msgid "This is optional"
 msgstr "Este opțional"
+
+#: events/models.py:176
+msgid "EventFormEntry"
+msgstr ""
+
+#: events/models.py:184
+msgid "EventFormElementEntry"
+msgstr ""
+
+#: events/views.py:271
+#, python-brace-format
+msgid "Error occurred: {0}."
+msgstr ""
+
+#: events/views.py:285
+msgid "Form was submitted successfully."
+msgstr ""
+
+#: events/views.py:306
+msgid "There was an error. Please check the form."
+msgstr ""
+
+#: events/views.py:379
+msgid "Form entry not found."
+msgstr ""
+
+#: events/views.py:520
+msgid "The form was imported successfully."
+msgstr ""
+
+#: eventsformdatabase/admin.py:52
+msgid "Export data to CSV/XLS"
+msgstr ""
+
+#: eventsformdatabase/admin.py:69 eventsformdatabase/admin.py:124
+#: eventsformdatabase/templates/db_store/view_saved_form_data_entries.html:40
+#: eventsformdatabase/templates/db_store/view_saved_form_wizard_data_entries.html:40
+msgid "Data"
+msgstr ""
+
+#: eventsformdatabase/admin.py:72 eventsformdatabase/admin.py:127
+msgid "Raw"
+msgstr ""
+
+#: eventsformdatabase/admin.py:84 eventsformdatabase/models.py:111
+msgid "Saved form data entry"
+msgstr ""
+
+#: eventsformdatabase/admin.py:139 eventsformdatabase/models.py:135
+msgid "Saved form wizard data entry"
+msgstr ""
+
+#: eventsformdatabase/base.py:41 eventsformdatabase/base.py:138
+msgid "DB store"
+msgstr ""
+
+#: eventsformdatabase/base.py:113 eventsformdatabase/base.py:204
+#: eventsformdatabase/templates/db_store/plugin_data_repr.html:4
+msgid "View entries"
+msgstr ""
+
+#: eventsformdatabase/base.py:120 eventsformdatabase/base.py:211
+msgid "Export entries"
+msgstr ""
+
+#: eventsformdatabase/models.py:46
+msgid "Form data headers"
+msgstr ""
+
+#: eventsformdatabase/models.py:50
+msgid "Plugin data"
+msgstr ""
+
+#: eventsformdatabase/models.py:51
+msgid "Dragos Plugin data"
+msgstr ""
+
+#: eventsformdatabase/models.py:52
+msgid "Date created"
+msgstr ""
+
+#: eventsformdatabase/models.py:56
+msgid "Invitee"
+msgstr ""
+
+#: eventsformdatabase/models.py:92
+msgid "Saved data"
+msgstr ""
+
+#: eventsformdatabase/models.py:112
+msgid "Saved form data entries"
+msgstr ""
+
+#: eventsformdatabase/models.py:136
+msgid "Saved form wizard data entries"
+msgstr ""
+
+#: eventsformdatabase/templates/db_store/view_saved_form_data_entries.html:5
+#: eventsformdatabase/templates/db_store/view_saved_form_data_entries.html:23
+#: eventsformdatabase/templates/db_store/view_saved_form_wizard_data_entries.html:23
+msgid "View form data"
+msgstr ""
+
+#: eventsformdatabase/templates/db_store/view_saved_form_data_entries.html:30
+#: eventsformdatabase/templates/db_store/view_saved_form_wizard_data_entries.html:30
+msgid "Saved form data"
+msgstr ""
+
+#: eventsformdatabase/templates/db_store/view_saved_form_data_entries.html:41
+#: eventsformdatabase/templates/db_store/view_saved_form_wizard_data_entries.html:41
+msgid "Date"
+msgstr ""
+
+#: eventsformdatabase/templates/db_store/view_saved_form_data_entries.html:49
+#: eventsformdatabase/templates/db_store/view_saved_form_wizard_data_entries.html:49
+msgid "Filter"
+msgstr ""
+
+#: eventsformdatabase/templates/db_store/view_saved_form_wizard_data_entries.html:5
+msgid "View form wizard data"
+msgstr ""
 
 #: myhub_events/templates/account/account_inactive.html:5
 #: myhub_events/templates/account/account_inactive.html:8
@@ -308,13 +640,455 @@ msgid ""
 "mail address</a>."
 msgstr ""
 
-#: myhub_events/templates/events/event_detail.html:17
+#: myhub_events/templates/events/event_detail.html:21
 msgid "From"
 msgstr "De"
 
-#: myhub_events/templates/events/event_detail.html:20
+#: myhub_events/templates/events/event_detail.html:26
 msgid "Until"
 msgstr "Până"
+
+#: myhub_events/templates/fobi/admin/bulk_change_plugins.html:5
+#: myhub_events/templates/fobi/admin/bulk_change_plugins.html:32
+#: myhub_events/templates/fobi/admin/bulk_change_plugins.html:37
+msgid "Edit multiple objects"
+msgstr ""
+
+#: myhub_events/templates/fobi/admin/bulk_change_plugins.html:5
+msgid "Django site admin"
+msgstr ""
+
+#: myhub_events/templates/fobi/admin/bulk_change_plugins.html:29
+msgid "Home"
+msgstr ""
+
+#: myhub_events/templates/fobi/admin/bulk_change_plugins.html:76
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:158
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:177
+msgid "Submit changes"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/_base.html:109
+#: myhub_events/templates/fobi/generic/add_form_element_entry.html:18
+#: myhub_events/templates/fobi/generic/add_form_handler_entry.html:11
+#: myhub_events/templates/fobi/generic/add_form_wizard_handler_entry.html:11
+#: myhub_events/templates/fobi/generic/create_form_entry.html:11
+#: myhub_events/templates/fobi/generic/create_form_wizard_entry.html:11
+#: myhub_events/templates/fobi/generic/dashboard.html:11
+#: myhub_events/templates/fobi/generic/edit_form_element_entry.html:18
+#: myhub_events/templates/fobi/generic/edit_form_entry.html:8
+#: myhub_events/templates/fobi/generic/edit_form_handler_entry.html:11
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry.html:12
+#: myhub_events/templates/fobi/generic/form_entry_inactive.html:11
+#: myhub_events/templates/fobi/generic/form_entry_submitted.html:11
+#: myhub_events/templates/fobi/generic/form_importer.html:11
+#: myhub_events/templates/fobi/generic/form_wizard_entry_submitted.html:11
+#: myhub_events/templates/fobi/generic/form_wizards_dashboard.html:17
+#: myhub_events/templates/fobi/generic/import_form_entry.html:11
+#: myhub_events/templates/fobi/generic/view_form_wizard_entry.html:17
+msgid "Forms"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/_base.html:110
+#: myhub_events/templates/fobi/generic/add_form_element_entry.html:19
+#: myhub_events/templates/fobi/generic/add_form_handler_entry.html:12
+#: myhub_events/templates/fobi/generic/add_form_wizard_handler_entry.html:12
+#: myhub_events/templates/fobi/generic/create_form_entry.html:12
+#: myhub_events/templates/fobi/generic/create_form_wizard_entry.html:12
+#: myhub_events/templates/fobi/generic/dashboard.html:12
+#: myhub_events/templates/fobi/generic/edit_form_element_entry.html:19
+#: myhub_events/templates/fobi/generic/edit_form_entry.html:9
+#: myhub_events/templates/fobi/generic/edit_form_handler_entry.html:12
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry.html:13
+#: myhub_events/templates/fobi/generic/form_entry_inactive.html:12
+#: myhub_events/templates/fobi/generic/form_entry_submitted.html:12
+#: myhub_events/templates/fobi/generic/form_importer.html:12
+#: myhub_events/templates/fobi/generic/form_wizard_entry_submitted.html:12
+#: myhub_events/templates/fobi/generic/form_wizards_dashboard.html:18
+#: myhub_events/templates/fobi/generic/import_form_entry.html:12
+#: myhub_events/templates/fobi/generic/view_form_wizard_entry.html:18
+msgid "Wizards"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/add_form_element_entry.html:5
+#: myhub_events/templates/fobi/generic/add_form_element_entry_ajax.html:6
+#, python-format
+msgid "Add \"%(plugin_name)s\" element to the form"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/add_form_element_entry_ajax.html:11
+#: myhub_events/templates/fobi/generic/add_form_handler_entry_ajax.html:9
+#: myhub_events/templates/fobi/generic/add_form_wizard_handler_entry_ajax.html:9
+#: myhub_events/templates/fobi/generic/create_form_entry_ajax.html:9
+#: myhub_events/templates/fobi/generic/create_form_wizard_entry_ajax.html:9
+msgid "Add"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/add_form_handler_entry.html:5
+#: myhub_events/templates/fobi/generic/add_form_handler_entry_ajax.html:6
+#, python-format
+msgid "Add \"%(plugin_name)s\" handler to the form"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/add_form_wizard_handler_entry.html:5
+#: myhub_events/templates/fobi/generic/add_form_wizard_handler_entry_ajax.html:6
+#, python-format
+msgid "Add \"%(plugin_name)s\" handler to the form wizard"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/create_form_entry.html:5
+msgid "Create form entry"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/create_form_entry_ajax.html:6
+#: myhub_events/templates/fobi/generic/dashboard.html:84
+msgid "Create form"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/create_form_wizard_entry.html:5
+msgid "Create form wizard entry"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/create_form_wizard_entry_ajax.html:6
+#: myhub_events/templates/fobi/generic/form_wizards_dashboard.html:86
+msgid "Create form wizard"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/dashboard.html:5
+#: myhub_events/templates/fobi/generic/dashboard.html:19
+#: myhub_events/templates/fobi/generic/form_wizards_dashboard.html:23
+msgid "Dashboard"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/dashboard.html:26
+msgid "Your forms"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/dashboard.html:35
+#, fuzzy
+#| msgid "Event Title"
+msgid "Event"
+msgstr "Titlul evenimentului"
+
+#: myhub_events/templates/fobi/generic/dashboard.html:36
+#: myhub_events/templates/fobi/generic/form_wizards_dashboard.html:40
+msgid "Is public"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/dashboard.html:37
+msgid "Is active"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/dashboard.html:39
+#: myhub_events/templates/fobi/generic/dashboard.html:79
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:103
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:122
+#: myhub_events/templates/fobi/generic/form_wizards_dashboard.html:42
+#: myhub_events/templates/fobi/generic/form_wizards_dashboard.html:82
+#: myhub_events/templates/fobi/generic/forms_list.html:7
+#, fuzzy
+#| msgid "Location"
+msgid "Actions"
+msgstr "Locație"
+
+#: myhub_events/templates/fobi/generic/dashboard.html:54
+#: myhub_events/templates/fobi/generic/edit_form_entry.html:13
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:121
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry.html:17
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:62
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:140
+#: myhub_events/templates/fobi/generic/form_wizards_dashboard.html:55
+#: myhub_events/templates/fobi/generic/forms_list.html:20
+#: myhub_events/templates/fobi/generic/view_form_wizard_entry.html:12
+msgid "Edit"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/dashboard.html:59
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:123
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:67
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:142
+#: myhub_events/templates/fobi/generic/form_wizards_dashboard.html:60
+#: myhub_events/templates/fobi/generic/forms_list.html:27
+msgid "Delete"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/dashboard.html:64
+#: myhub_events/templates/fobi/generic/form_wizards_dashboard.html:65
+#: myhub_events/templates/fobi/generic/forms_list.html:34
+msgid "Export"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/dashboard.html:87
+#: myhub_events/templates/fobi/generic/import_form_entry_ajax.html:6
+msgid "Import form"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_element_entry.html:5
+#: myhub_events/templates/fobi/generic/edit_form_element_entry_ajax.html:6
+#, python-format
+msgid "Edit \"%(plugin_name)s\" element of the form"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_element_entry_ajax.html:11
+#: myhub_events/templates/fobi/generic/edit_form_handler_entry_ajax.html:9
+#: myhub_events/templates/fobi/generic/snippets/form_wizard.html:49
+#: myhub_events/templates/fobi/generic/view_form_entry_ajax.html:9
+msgid "Submit"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry.html:5
+msgid "Edit form entry"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry.html:14
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry.html:18
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:57
+#: myhub_events/templates/fobi/generic/view_form_wizard_entry.html:13
+msgid "View"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:3
+msgid "Edit form"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:10
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:10
+msgid "Elements"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:11
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:11
+msgid "Handlers"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:12
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:12
+msgid "Properties"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:13
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:171
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:13
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:191
+msgid "Service"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:23
+msgid "Add elements to your form"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:31
+msgid "Choose form element to add"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:64
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:83
+msgid "Save ordering"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:77
+msgid "Add handlers to your form"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:85
+msgid "Choose form handler to add"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:101
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:120
+msgid "Handler"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:114
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:133
+#, fuzzy
+#| msgid "More Info"
+msgid "Info"
+msgstr "Mai multe informații"
+
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:147
+msgid "Form properties"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:177
+msgid "Export your form as JSON"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:178
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:197
+msgid "Export your form into JSON format and import it again any time!"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:181
+msgid "Export form"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:187
+msgid "Delete your form"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:188
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:206
+msgid "Once deleted, can't be undone!"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_entry_ajax.html:191
+msgid "Delete form"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_handler_entry.html:5
+#: myhub_events/templates/fobi/generic/edit_form_handler_entry_ajax.html:6
+#, python-format
+msgid "Edit \"%(plugin_name)s\" handler of the form"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry.html:5
+msgid "Edit form wizard entry"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:3
+msgid "Edit form wizard"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:22
+msgid "Add forms to your form wizard"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:30
+msgid "Choose form to add"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:43
+#: myhub_events/templates/fobi/generic/snippets/form_properties_snippet.html:5
+#: myhub_events/templates/fobi/generic/snippets/form_snippet.html:6
+#: myhub_events/templates/fobi/generic/snippets/form_wizard_properties_snippet.html:4
+#: myhub_events/templates/fobi/generic/snippets/form_wizard_snippet.html:4
+msgid "Fields marked with <span class=\"required-field\">*</span> are required"
+msgstr ""
+"Câmpurile marcate cu <span class=\"required-field\">*</span> sunt obligatorii"
+
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:96
+msgid "Add handlers to your form wizard"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:104
+msgid "Choose form wizard handler to add"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:166
+msgid "Form wizard properties"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:196
+msgid "Export your form wizard as JSON"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:200
+msgid "Export form wizard"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:205
+msgid "Delete your form wizard"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:209
+msgid "Delete form wizard"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/form_entry_inactive.html:5
+msgid "Form is not active"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/form_entry_inactive_ajax.html:12
+#, fuzzy
+#| msgid "This account is inactive."
+msgid "This form is not active."
+msgstr "Acest cont este inactiv"
+
+#: myhub_events/templates/fobi/generic/form_entry_submitted.html:5
+msgid "Form submitted!"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/form_entry_submitted_ajax.html:4
+#: myhub_events/templates/fobi/generic/form_wizard_entry_submitted_ajax.html:4
+msgid "Thank you!"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/form_entry_submitted_ajax.html:15
+msgid "Form submitted successfully."
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/form_importer.html:5
+#: myhub_events/templates/fobi/generic/form_importer_ajax.html:6
+msgid "Form importer"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/form_importer_ajax.html:9
+#: myhub_events/templates/fobi/generic/import_form_entry_ajax.html:9
+msgid "Import"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/form_wizard_entry_submitted.html:5
+msgid "Form wizard submitted!"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/form_wizard_entry_submitted_ajax.html:15
+msgid "Form wizard submitted successfully."
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/form_wizards_dashboard.html:5
+msgid "Form wizards dashboard"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/form_wizards_dashboard.html:30
+msgid "Your form wizards"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/form_wizards_dashboard.html:39
+msgid "Form wizard"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/form_wizards_dashboard.html:89
+msgid "Import form wizard"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/import_form_entry.html:5
+msgid "Import form entry"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/snippets/form_properties_snippet.html:37
+#: myhub_events/templates/fobi/generic/snippets/form_wizard_properties_snippet.html:33
+msgid "Help"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/snippets/form_wizard.html:33
+msgid "First step"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/snippets/form_wizard.html:42
+msgid "Previous step"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/view_form_entry_ajax.html:6
+#: myhub_events/templates/fobi/generic/view_form_wizard_entry_ajax.html:6
+msgid "View form"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/view_form_wizard_entry.html:5
+msgid "View form wizard"
+msgstr ""
+
+#: myhub_events/templates/fobi/generic/view_form_wizard_entry_ajax.html:9
+msgid "Next"
+msgstr ""
+
+#: myhub_events/templates/fobi/integration/login_required.html:3
+#, python-format
+msgid ""
+"\n"
+"You have to be authorised in order to see the content.\n"
+"<a href=\"%(login_url)s\">Log in</a> here.\n"
+msgstr ""
 
 #: myhub_events/templates/partials/navbar.html:19
 msgid "More Info"
@@ -325,6 +1099,10 @@ msgid "Location"
 msgstr "Locație"
 
 #: myhub_events/templates/partials/navbar.html:25
+msgid "Quizz"
+msgstr ""
+
+#: myhub_events/templates/partials/navbar.html:28
 msgid "Choose language"
 msgstr "Alege limba"
 
