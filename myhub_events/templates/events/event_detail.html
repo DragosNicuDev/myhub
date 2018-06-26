@@ -84,6 +84,21 @@
     <div class="container">
       <div class="row example-page">
         <div class="col">
+          {% ifequal LANGUAGE_CODE 'ro' %}
+          <p>Înainte de a răspunde la întrebări, te rugăm sa citești cu atenție următoarele:</p>
+<ul><li>După data de 1 august 2018 chestionarul nu va mai fi accesibil - dacă nu vei răspunde până atunci vom considera că nu poți veni (ne pare rău, chiar voiam să te vedem)</li>
+<li>Folosiți doar link-ul din mailul personal (sunt personalizate și asa știm cine ce a răspuns ceea ce ne ajută să facem aranjamentele cu drumul, cazarea, masa, etc)</li>
+<li>Dacă ai răspuns deja, dar ai nevoie să modifici, poți accesa link-ul din nou și răspunde</li>
+<ul><li>Atenție mare deoarece răspunsurile anterioare vor fi șterse, deci asigură-te că ai completat tot ce este necesar și că ai răspuns din nou la toate întrebările</li></ul></ul>
+<p><b>În cazul în care apar modificări ulterioare, te rugăm să ne contactezi direct. Mulțumim pentru tot!</b></p>{% endifequal %}
+          {% ifequal LANGUAGE_CODE 'en' %}
+          <p>Before answering the questions, please read carefully the following:</p>
+<ul><li>After 1st of August 2018 the questionnaire won’t be accessible anymore - if you don’t answer until then we will think that you can’t be there (we are sorry for that, we would really like to see you)</li>
+<li>Use only the link from the email we have sent you (they are personalised and that is how we know who what answered which helps us arrange the transport, accommodation, meals, etc)</li>
+<li>If you already answered but you need to make changes, you can access the link again and submit new answers</li>
+<ul><li>Note that the previous answers will be deleted, so make sure you fill in and you answer again all the questions</li></ul></ul>
+<p><b>In case you have later edits please contact us directly. Thanks for everything!</b></p>{% endifequal %}
+          <br>
           {% include fobi_theme.view_form_entry_ajax_template %}
         </div>
       </div>
