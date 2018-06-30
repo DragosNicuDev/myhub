@@ -116,15 +116,23 @@ $( document ).ready(function() { //wait until body loads
   var doi=$('#fobi-form input:radio[name={{field.html_name}}]');
     {% for data in field.field.conditioned_data %}
       var {{data}} = $('#fobi-form #{{data}}');
-      $("input").prop('required',false);
+      $("input:radio").prop('required',false);
+      $("input:checkbox").prop('required',false);
+      // $("input:radio").removeAttr('required');
+      // $("input:checkbox").removeAttr('required');
       doi.change(function(){
         var value=this.value;
         {{data}}.addClass('d-none');
-        $("input").prop('required',false);
+        // $("input").prop('required',false);
+        // $("input").removeAttr('required');
+        $("input:radio").removeAttr('required');
+        $("input:checkbox").removeAttr('required');
 
       if (value == '{{field.field.conditional}}'){
         {{data}}.removeClass('d-none');
-        $("input").prop('required',true);
+        // $("input").prop('required',true);
+        $("input:radio").prop('required',true);
+        $("input:checkbox").prop('required',true);
       }
       });
       if ($('#fobi-form input:radio[name={{field.html_name}}]:checked').val() == '{{field.field.conditional}}'){
@@ -134,6 +142,7 @@ $( document ).ready(function() { //wait until body loads
     {% endfor %}
   {% endif %}
 {% endfor %}
+$("#fobi-form").validate({});
 });
 </script>
 {% endblock javascript %}
