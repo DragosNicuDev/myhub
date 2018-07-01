@@ -31,11 +31,13 @@ class DragosNoneField(Field):
     def __init__(self, required=True, widget=None, label=None, initial=None,
                  conditional=None, conditioned_data=None, is_conditioned=None,
                  help_text='', error_messages=None, show_hidden_initial=False,
-                 validators=(), localize=False, disabled=False, label_suffix=None):
+                 validators=(), localize=False, disabled=False, label_suffix=None,
+                 ro_text=None):
         super().__init__(
             required=required, widget=widget, label=label, initial=initial,
             help_text=help_text)
         self.conditional = conditional
+        self.ro_text = ro_text
         self.is_conditioned = is_conditioned
         self.conditioned_data = conditioned_data
 

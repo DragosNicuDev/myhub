@@ -46,13 +46,16 @@ class DragosContentTextPlugin(FormElementPlugin):
         return OrderedDict(
             (
                 ('text', self.data.text),
+                # ('ro_text', self.data.ro_text),
             )
         )
 
     def get_rendered_text(self):
         """Get rendered text."""
         rendered_text = "<p>{0}</p>".format(smart_str(self.data.text))
+        # rendered_text_ro = "<p>{0}</p>".format(smart_str(self.data.ro_text))
         return rendered_text
+        # return (rendered_text, rendered_text_ro)
 
     def get_form_field_instances(self, request=None, form_entry=None,
                                  form_element_entries=None, **kwargs):
@@ -61,6 +64,7 @@ class DragosContentTextPlugin(FormElementPlugin):
             'initial': self.get_rendered_text(),
             'required': False,
             'label': '',
+            'ro_text': self.data.ro_text,
             'is_conditioned': self.data.is_conditioned,
         }
         return [(slugify(self.data.text).replace('-', '_'), DragosNoneField, field_kwargs)]

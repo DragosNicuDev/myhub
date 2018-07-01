@@ -28,6 +28,7 @@ class DragosContentTextForm(forms.Form, BasePluginForm):
 
     plugin_data_fields = [
         ("text", ""),
+        ("ro_text", ""),
         ("conditional", ""),
         ("conditioned_data", ""),
         ("is_conditioned", ""),
@@ -35,6 +36,11 @@ class DragosContentTextForm(forms.Form, BasePluginForm):
 
     text = forms.CharField(
         label=_("Text"),
+        required=True,
+        widget=Textarea(attrs={'class': theme.form_element_html_class})
+    )
+    ro_text = forms.CharField(
+        label=_("Romanian Text"),
         required=True,
         widget=Textarea(attrs={'class': theme.form_element_html_class})
     )
@@ -67,10 +73,14 @@ class DragosContentTextForm(forms.Form, BasePluginForm):
         if BLEACH_INSTALLED:
             return bleach.clean(
                 text=self.cleaned_data['text'],
+                ro_text=self.cleaned_data['ro_text'],
                 tags=ALLOWED_TAGS,
                 attributes=ALLOWED_ATTRIBUTES,
                 strip=True,
                 strip_comments=True
             )
         else:
-            return strip_tags(self.cleaned_data['text'])
+            return strip_tags(
+                self.cleaned_data['text'],
+                self.cleaned_data['ro_text'],
+            )

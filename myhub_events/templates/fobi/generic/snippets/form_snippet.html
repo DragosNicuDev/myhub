@@ -99,7 +99,12 @@
           {% endfor %}
           {% endifequal %}
         {% else %}
+        {% ifequal LANGUAGE_CODE 'en' %}
           {{ field }}
+        {% endifequal %}
+        {% ifequal LANGUAGE_CODE 'ro' %}
+          {{ field.field.ro_text }}
+        {% endifequal %}
         {% endif %}
 
         {% if field.errors %}
