@@ -73,7 +73,6 @@ class DragosContentTextForm(forms.Form, BasePluginForm):
         if BLEACH_INSTALLED:
             return bleach.clean(
                 text=self.cleaned_data['text'],
-                ro_text=self.cleaned_data['ro_text'],
                 tags=ALLOWED_TAGS,
                 attributes=ALLOWED_ATTRIBUTES,
                 strip=True,
