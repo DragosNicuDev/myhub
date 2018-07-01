@@ -33,6 +33,7 @@ class DragosRangeSelectInputForm(forms.Form, BaseFormFieldPluginForm):
         ("max_value", INITIAL_MAX_VALUE),
         ("step", STEP),
         ("help_text", ""),
+        ("ro_help_text", ""),
         ("initial", INITIAL),
         ("conditional", ""),
         ("conditioned_data", ""),
@@ -87,6 +88,13 @@ class DragosRangeSelectInputForm(forms.Form, BaseFormFieldPluginForm):
     )
     help_text = forms.CharField(
         label=_("Help text"),
+        required=False,
+        widget=forms.widgets.TextInput(
+            attrs={'class': theme.form_element_html_class}
+        )
+    )
+    ro_help_text = forms.CharField(
+        label=_("Text ajutător"),
         required=False,
         widget=forms.widgets.TextInput(
             attrs={'class': theme.form_element_html_class}

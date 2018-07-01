@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-26 16:32+0000\n"
+"POT-Creation-Date: 2018-07-01 22:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,19 +85,19 @@ msgstr ""
 msgid "Initial"
 msgstr ""
 
-#: dragos_checkbox_select_multiple/forms.py:132 dragos_content_text/forms.py:42
+#: dragos_checkbox_select_multiple/forms.py:132 dragos_content_text/forms.py:48
 #: dragos_radio/forms.py:132 dragos_range_select/forms.py:104
 #: dragos_text/forms.py:79
 msgid "Conditional"
 msgstr ""
 
-#: dragos_checkbox_select_multiple/forms.py:140 dragos_content_text/forms.py:50
+#: dragos_checkbox_select_multiple/forms.py:140 dragos_content_text/forms.py:56
 #: dragos_radio/forms.py:148 dragos_range_select/forms.py:112
 #: dragos_text/forms.py:87
 msgid "Conditioned Element"
 msgstr ""
 
-#: dragos_checkbox_select_multiple/forms.py:147 dragos_content_text/forms.py:57
+#: dragos_checkbox_select_multiple/forms.py:147 dragos_content_text/forms.py:63
 #: dragos_radio/forms.py:155 dragos_range_select/forms.py:119
 #: dragos_text/forms.py:94
 msgid "Is Conditioned"
@@ -117,8 +117,12 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: dragos_content_text/forms.py:37
+#: dragos_content_text/forms.py:38
 msgid "Text"
+msgstr ""
+
+#: dragos_content_text/forms.py:43
+msgid "Romanian Text"
 msgstr ""
 
 #: dragos_radio/base.py:42
@@ -207,16 +211,16 @@ msgstr ""
 msgid "Additional"
 msgstr ""
 
-#: events/form_utils.py:275
+#: events/form_utils.py:277
 msgid "Some essential plugin data missing in the JSON import."
 msgstr ""
 
-#: events/form_utils.py:290
+#: events/form_utils.py:292
 #, python-brace-format
 msgid "Plugin {0} is missing in the system."
 msgstr ""
 
-#: events/form_utils.py:297
+#: events/form_utils.py:299
 msgid "Some essential data missing in the JSON import."
 msgstr ""
 
@@ -960,7 +964,7 @@ msgstr ""
 
 #: myhub_events/templates/fobi/generic/edit_form_wizard_entry_ajax.html:43
 #: myhub_events/templates/fobi/generic/snippets/form_properties_snippet.html:5
-#: myhub_events/templates/fobi/generic/snippets/form_snippet.html:6
+#: myhub_events/templates/fobi/generic/snippets/form_snippet.html:7
 #: myhub_events/templates/fobi/generic/snippets/form_wizard_properties_snippet.html:4
 #: myhub_events/templates/fobi/generic/snippets/form_wizard_snippet.html:4
 msgid "Fields marked with <span class=\"required-field\">*</span> are required"

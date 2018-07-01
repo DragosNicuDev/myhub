@@ -99,12 +99,7 @@
           {% endfor %}
           {% endifequal %}
         {% else %}
-        {% ifequal LANGUAGE_CODE 'en' %}
           {{ field }}
-        {% endifequal %}
-        {% ifequal LANGUAGE_CODE 'ro' %}
-          {{ field.field.ro_text }}
-        {% endifequal %}
         {% endif %}
 
         {% if field.errors %}
@@ -115,10 +110,16 @@
             {% endfor %}
           </span>
         {% endif %}
-
+        {% ifequal LANGUAGE_CODE 'en' %}
         {% if field.help_text %}
           <span class="{% block form_element_help_text_html_class %}help-block{% endblock %}">{{ field.help_text|safe }}</span>
-        {% endif %}
+          {% endif %}
+        {% endifequal %}
+        {% ifequal LANGUAGE_CODE 'ro' %}
+          {% if field.field.ro_help_text %}
+            <span class="help-block">{{ field.field.ro_help_text|safe }}</span>
+          {% endif %}
+        {% endifequal %}
       </div>
     </div>
   {% endif %}

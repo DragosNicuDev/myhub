@@ -48,6 +48,7 @@ class DragosRangeSelectInputPlugin(FormFieldPlugin):
             'label': self.data.label,
             'ro_label': self.data.ro_label,
             'help_text': self.data.help_text,
+            'ro_help_text': self.data.ro_help_text,
             'initial': initial,
             'required': self.data.required,
             'choices': choices,

@@ -45,13 +45,14 @@ class DragosNoneField(Field):
 
 class DragosChoiceField(ChoiceField):
     def __init__(self, conditional=None, conditioned_data=None,
-                is_conditioned=None, conditioned_by=None, required=True, choices=None,
+                 is_conditioned=None, conditioned_by=None, required=True, choices=None,
                  ro_choices=None, widget=None, label=None, ro_label=None,
-                 initial=None, help_text='', *args, **kwargs):
+                 initial=None, help_text='', ro_help_text='', *args, **kwargs):
         super(DragosChoiceField, self).__init__(
             required=required, widget=widget, label=label, initial=initial,
             help_text=help_text, choices=choices, *args, **kwargs
         )
+        self.ro_help_text = ro_help_text
         self.ro_label = ro_label
         self.choices = choices
         self.ro_choices = ro_choices
