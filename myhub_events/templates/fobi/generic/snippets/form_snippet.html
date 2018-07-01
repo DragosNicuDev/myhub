@@ -2,8 +2,9 @@
 {% get_available_languages as languages %}
 
 {% block form_required_fields_message_block %}
-<div class="{% block form_required_fields_message_wrapper_class %}{% endblock %}">
-  {% blocktrans %}Fields marked with <span class="required-field">*</span> are required{% endblocktrans %}
+{# <div class="{% block form_required_fields_message_wrapper_class %}{% endblock %}"> #}
+<div class="alert alert-secondary" role="alert">
+  <span class="alert-link">{% blocktrans %}Fields marked with <span class="required-field">*</span> are required{% endblocktrans %}</span>
 </div>
 {% endblock form_required_fields_message_block %}
 
@@ -102,7 +103,8 @@
         {% endif %}
 
         {% if field.errors %}
-          <span class="{% block form_element_error_html_class %}help-block has-error{% endblock %}">
+          {# <span class="{% block form_element_error_html_class %}help-block has-error{% endblock %}"> #}
+          <span class="{% block form_element_error_html_class %}help-block invalid-feedback{% endblock %}">
             {% for field_error in field.errors %}
               {{ field_error }}
             {% endfor %}

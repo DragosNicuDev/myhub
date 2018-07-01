@@ -128,21 +128,46 @@ $( document ).ready(function() { //wait until body loads
         $("input:radio").removeAttr('required');
         $("input:checkbox").removeAttr('required');
 
-      if (value == '{{field.field.conditional}}'){
+      if (value === '{{field.field.conditional}}'){
         {{data}}.removeClass('d-none');
         // $("input").prop('required',true);
         $("input:radio").prop('required',true);
         $("input:checkbox").prop('required',true);
       }
       });
-      if ($('#fobi-form input:radio[name={{field.html_name}}]:checked').val() == '{{field.field.conditional}}'){
+      resetForms();
+      if ($('#fobi-form input:radio[name={{field.html_name}}]:checked').val() === '{{field.field.conditional}}'){
         {{data}}.removeClass('d-none');
-      }
+      };
       // GATA COD
     {% endfor %}
   {% endif %}
 {% endfor %}
-$("#fobi-form").validate({});
+// });
+$.validator.setDefaults({
+  errorElement: "div",
+  errorClass: 'col badge badge-danger',
+  highlight: function ( element, errorClass, validClass ) {
+    $( element ).addClass( "is-invalid" ).removeClass( "is-valid" );
+  },
+  unhighlight: function (element, errorClass, validClass) {
+    $( element ).addClass( "is-valid" ).removeClass( "is-invalid" );
+  },
+  errorPlacement: function( error, element ){
+    if (element.prop('type') === 'checkbox') {
+      error.insertBefore(element.offsetParent().offsetParent());
+    } else if (element.prop('type') === 'radio') {
+      error.insertBefore(element.offsetParent().offsetParent());
+    } else {
+      error.insertAfter(element);
+    }
+  }
 });
+  $("#fobi-form").validate({});
+  resetForms();
+});
+function resetForms() {
+    document.getElementById('fobi-form').reset();
+}
 </script>
 {% endblock javascript %}
