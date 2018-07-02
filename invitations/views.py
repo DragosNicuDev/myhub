@@ -90,6 +90,9 @@ class EventInvitationCreate(generic.CreateView):
         template_html = render_to_string('invitations/invitation_ro.html', context=context)
         message_ro.attach_alternative(template_html, "text/html")
         message_ro.mixed_subtype = 'related'
+        message_ro.esp_extra = {
+            'o:tag': ["Invitatii nunta",]  # use Mailgun's test mode
+        }
         message_ro.send()
 
         message_en = AnymailMessage(
@@ -109,6 +112,9 @@ class EventInvitationCreate(generic.CreateView):
         template_html = render_to_string('invitations/invitation_en.html', context=context)
         message_en.attach_alternative(template_html, "text/html")
         message_en.mixed_subtype = 'related'
+        message_en.esp_extra = {
+            'o:tag': ["Wedding Invitations",]  # use Mailgun's test mode
+        }
         message_en.send()
         return super().form_valid(form)
 
