@@ -114,9 +114,12 @@
   </div>
 </div>
 {% endblock %}
+
 {% block javascript %}
+{% if form_active %}
 
 <script type="text/javascript">
+console.log(<h1>Form active: {{form_active}}</h1>);
 $( document ).ready(function() { //wait until body loads
 {% for field in form %}
   {% if field.field.conditional %}
@@ -178,4 +181,5 @@ function resetForms() {
     document.getElementById('fobi-form').reset();
 }
 </script>
+{% endif %}
 {% endblock javascript %}
