@@ -168,6 +168,14 @@ class EventDetailView(DetailView):
 
        form_entry = EventFormEntry.objects.select_related('user') \
                                   .get(event__pk = self.kwargs.get('pk'))
+
+       context['form_active'] = form_entry.is_active
+       if not form_entry.is_active:
+           context['form_inactive_page_title'] = form_entry.inactive_page_title
+           context['form_inactive_page_content'] = form_entry
+
+           return context
+
        form_element_entries = form_entry.formelemententry_set.all()[:]
        form_cls = assemble_form_class(
            form_entry,

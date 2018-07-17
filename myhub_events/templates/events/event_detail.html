@@ -84,6 +84,8 @@
     <div class="container marinel">
       <div class="row example-page">
         <div class="col">
+          {% if form_active %}
+          {# <h1>Form active: {{form_active}}</h1> #}
           {% ifequal LANGUAGE_CODE 'ro' %}
           <p>Înainte de a răspunde la întrebări, te rugăm sa citești cu atenție următoarele:</p>
 <ul><li>După data de 1 august 2018 chestionarul nu va mai fi accesibil - dacă nu vei răspunde până atunci vom considera că nu poți veni (ne pare rău, chiar voiam să te vedem)</li>
@@ -100,6 +102,12 @@
 <p><b>In case you have later edits please contact us directly. Thanks for everything!</b></p>{% endifequal %}
           <br>
           {% include fobi_theme.view_form_entry_ajax_template %}
+          {% else %}
+          <h3>{{form_inactive_page_title}}</h3>
+          {% if form_inactive_page_content.inactive_page_message %}
+            <h4>{{form_inactive_page_content.inactive_page_message|safe }}</h4>
+          {% endif %}
+          {% endif %}
         </div>
       </div>
     </div>
