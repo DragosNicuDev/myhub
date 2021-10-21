@@ -3,7 +3,7 @@ argon2-cffi==18.1.0
 arrow==0.12.1
 attrs==17.4.0
 awesome-slugify==1.6.5
-Babel==2.5.3
+Babel==2.9.1
 binaryornot==0.4.4
 certifi==2018.1.18
 cffi==1.11.4
